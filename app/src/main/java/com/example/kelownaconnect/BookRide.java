@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
+import com.google.android.libraries.places.api.Places;
 
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -28,6 +29,11 @@ public class BookRide extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Initialize the Places API
+        if (!Places.isInitialized()) {
+            Places.initialize(getApplicationContext(), BuildConfig.GOOGLE_MAPS_API_KEY);
+        }
 
         // Views
         EditText pickupLocation = findViewById(R.id.pickupLocation);
