@@ -30,6 +30,9 @@ public class BookRide extends AppCompatActivity {
         });
 
         EditText departureTime = findViewById(R.id.departureTime);
+        // Disable text input and enable click behavior
+        departureTime.setFocusable(false);
+        departureTime.setClickable(true);
         departureTime.setOnClickListener(v -> {
             // Get the current time
             Calendar calendar = Calendar.getInstance();
