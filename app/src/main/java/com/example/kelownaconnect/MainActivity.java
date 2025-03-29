@@ -1,5 +1,6 @@
 package com.example.kelownaconnect;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -29,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
         Button withdrawButton = findViewById(R.id.withdrawButton);
         Button activeRidesButton = findViewById(R.id.activeRidesButton);
         Button settingsButton = findViewById(R.id.settingsButton);
+
+        bookRideButton.setOnClickListener(v -> {
+            // Handle book ride button click
+            // Start BookRide activity
+            startActivity(new Intent(MainActivity.this, BookRide.class));
+        });
 
     }
 }
