@@ -39,93 +39,93 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/offerRideButton"
-        android:layout_width="135dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="540dp"
+        android:layout_width="175dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="520dp"
         android:backgroundTint="#007BFF"
         android:text="Offer Ride"
         app:cornerRadius="0dp"
         app:icon="@drawable/baseline_emoji_people_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.818"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/bookRideButton"
-        android:layout_width="135dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="540dp"
-        android:backgroundTint="#007BFF"
-        android:text="Book Ride"
-        app:cornerRadius="0dp"
-        app:icon="@drawable/baseline_directions_car_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/activeRidesButton"
-        android:layout_width="135dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="420dp"
-        android:backgroundTint="#007BFF"
-        android:text="Active Rides"
-        app:cornerRadius="0dp"
-        app:icon="@drawable/baseline_car_crash_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/rewardsButton"
-        android:layout_width="135dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="480dp"
-        android:backgroundTint="#007BFF"
-        android:text="Rewards"
-        app:cornerRadius="0dp"
-        app:icon="@drawable/baseline_card_giftcard_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/withdrawMoneyButton"
-        android:layout_width="135dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="480dp"
+        android:layout_width="175dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="440dp"
         android:backgroundTint="#007BFF"
         android:text="Withdraw"
         app:cornerRadius="0dp"
         app:icon="@drawable/baseline_attach_money_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/settingsButton"
-        android:layout_width="135dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="420dp"
+        android:layout_width="175dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="360dp"
         android:backgroundTint="#007BFF"
         android:text="Settings"
         app:cornerRadius="0dp"
         app:icon="@drawable/baseline_settings_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bookRideButton"
+        android:layout_width="175dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="520dp"
+        android:backgroundTint="#007BFF"
+        android:text="Book Ride"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/baseline_directions_car_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/rewardsButton"
+        android:layout_width="175dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="440dp"
+        android:backgroundTint="#007BFF"
+        android:text="Rewards"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/baseline_card_giftcard_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/activeRidesButton"
+        android:layout_width="175dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="360dp"
+        android:backgroundTint="#007BFF"
+        android:text="Active Rides"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/baseline_car_crash_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/recentRidesTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="252dp"
+        android:layout_marginTop="316dp"
         android:gravity="center"
         android:text="Recent Rides"
         android:textColor="#003366"
