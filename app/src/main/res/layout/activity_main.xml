@@ -12,15 +12,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="4dp"
         android:padding="16dp"
         android:shadowColor="#000000"
         android:text="Kelowna Connect"
         android:textColor="#003366"
-        android:textSize="30sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:flow_horizontalAlign="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/offerRideButton"
