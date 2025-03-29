@@ -29,7 +29,14 @@ public class BookRide extends AppCompatActivity {
             return insets;
         });
 
+        // Views
+        EditText pickupLocation = findViewById(R.id.pickupLocation);
+        EditText dropoffLocation = findViewById(R.id.dropoffLocation);
+        EditText passengerCount = findViewById(R.id.passengerCount);
         EditText departureTime = findViewById(R.id.departureTime);
+        EditText carpoolPreferences = findViewById(R.id.carpoolPreferences);
+        EditText bookRideButton = findViewById(R.id.bookRideButton);
+
         // Disable text input and enable click behavior
         departureTime.setFocusable(false);
         departureTime.setClickable(true);
