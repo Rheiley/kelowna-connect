@@ -1,6 +1,7 @@
 package com.example.kelownaconnect;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
@@ -35,7 +36,7 @@ public class BookRide extends AppCompatActivity {
         EditText passengerCount = findViewById(R.id.passengerCount);
         EditText departureTime = findViewById(R.id.departureTime);
         EditText carpoolPreferences = findViewById(R.id.carpoolPreferences);
-        EditText bookRideButton = findViewById(R.id.bookRideButton);
+        Button bookRideButton = findViewById(R.id.bookRideButton);
 
         // Disable text input and enable click behavior
         departureTime.setFocusable(false);
