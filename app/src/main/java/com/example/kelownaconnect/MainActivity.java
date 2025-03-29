@@ -1,6 +1,8 @@
 package com.example.kelownaconnect;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +22,20 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Views
+        Button bookRideButton = findViewById(R.id.bookRideButton);
+        Button offerRideButton = findViewById(R.id.offerRideButton);
+        Button rewardsButton = findViewById(R.id.rewardsButton);
+        Button withdrawButton = findViewById(R.id.withdrawButton);
+        Button activeRidesButton = findViewById(R.id.activeRidesButton);
+        Button settingsButton = findViewById(R.id.settingsButton);
+
+        bookRideButton.setOnClickListener(v -> {
+            // Handle book ride button click
+            // Start BookRide activity
+            startActivity(new Intent(MainActivity.this, BookRide.class));
+        });
+
     }
 }

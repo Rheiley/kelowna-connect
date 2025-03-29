@@ -8,12 +8,167 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/headerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="4dp"
+        android:padding="16dp"
+        android:shadowColor="#000000"
+        android:text="Kelowna Connect"
+        android:textColor="#003366"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:flow_horizontalAlign="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Welcome, User"
+        android:textColor="#333333"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerText" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/offerRideButton"
+        android:layout_width="175dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="520dp"
+        android:backgroundTint="#007BFF"
+        android:text="Offer Ride"
+        android:textSize="20sp"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/baseline_emoji_people_24"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/settingsButton"
+        android:layout_width="175dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="360dp"
+        android:backgroundTint="#007BFF"
+        android:text="Settings"
+        android:textSize="20sp"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/baseline_settings_24"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/withdrawButton"
+        android:layout_width="175dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="440dp"
+        android:backgroundTint="#007BFF"
+        android:text="Withdraw"
+        android:textSize="20sp"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/baseline_attach_money_24"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bookRideButton"
+        android:layout_width="175dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="520dp"
+        android:backgroundTint="#007BFF"
+        android:text="Book Ride"
+        android:textSize="20sp"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/baseline_directions_car_24"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/rewardsButton"
+        android:layout_width="175dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="440dp"
+        android:backgroundTint="#007BFF"
+        android:text="Rewards"
+        android:textSize="20sp"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/baseline_card_giftcard_24"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/activeRidesButton"
+        android:layout_width="175dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="360dp"
+        android:backgroundTint="#007BFF"
+        android:text="Active Rides"
+        android:textSize="20sp"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/baseline_car_crash_24"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/recentRidesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="324dp"
+        android:gravity="center"
+        android:text="Recent Rides"
+        android:textColor="#003366"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recentRidesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recentRidesTitle" />
+
+    <TextView
+        android:id="@+id/driverStatusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="Driver Status: Not Booked"
+        android:textColor="#333333"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
