@@ -24,11 +24,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Welcome, User"
+        android:textColor="#333333"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerText" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/offerRideButton"
         android:layout_width="135dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="540dp"
         android:backgroundTint="#007BFF"
         android:text="Offer Ride"
         app:cornerRadius="0dp"
@@ -42,7 +55,7 @@
         android:id="@+id/bookRideButton"
         android:layout_width="135dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="540dp"
         android:backgroundTint="#007BFF"
         android:text="Book Ride"
         app:cornerRadius="0dp"
@@ -53,10 +66,24 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/activeRidesButton"
+        android:layout_width="135dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="420dp"
+        android:backgroundTint="#007BFF"
+        android:text="Active Rides"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/baseline_car_crash_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.188"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/rewardsButton"
         android:layout_width="135dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginBottom="480dp"
         android:backgroundTint="#007BFF"
         android:text="Rewards"
         app:cornerRadius="0dp"
@@ -70,7 +97,7 @@
         android:id="@+id/withdrawMoneyButton"
         android:layout_width="135dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginBottom="480dp"
         android:backgroundTint="#007BFF"
         android:text="Withdraw"
         app:cornerRadius="0dp"
@@ -81,24 +108,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/activeRidesButton"
-        android:layout_width="135dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="44dp"
-        android:backgroundTint="#007BFF"
-        android:text="Active Rides"
-        app:cornerRadius="0dp"
-        app:icon="@drawable/baseline_car_crash_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
         android:id="@+id/settingsButton"
         android:layout_width="135dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="420dp"
         android:backgroundTint="#007BFF"
         android:text="Settings"
         app:cornerRadius="0dp"
