@@ -72,6 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Apply Filters:"
+            android:layout_marginStart="16dp"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
@@ -80,18 +81,21 @@
             android:id="@+id/filterRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="Highest Rating" />
 
         <CheckBox
             android:id="@+id/filterPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="Lowest Price" />
 
         <CheckBox
             android:id="@+id/filterETA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="Earliest ETA" />
     </LinearLayout>
 
