@@ -48,7 +48,7 @@ public class FindARide extends AppCompatActivity {
         drivers.add(new Driver("Jane Smith", 4.8, 25.0, "10 mins", "SUV", 15));
         drivers.add(new Driver("Mark Lee", 4.2, 18.0, "20 mins", "Sedan", 2));
 
-        driverAdapter.notifyDataSetChanged();
+        driverAdapter.updateList(drivers);
 
         // Set filter listeners
         filterRating.setOnCheckedChangeListener((buttonView, isChecked) -> applyFilters());
