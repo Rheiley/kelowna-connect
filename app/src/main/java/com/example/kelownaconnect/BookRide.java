@@ -57,7 +57,13 @@ public class BookRide extends AppCompatActivity {
         EditText passengerCount = findViewById(R.id.passengerCount);
         EditText departureTime = findViewById(R.id.departureTime);
         EditText carpoolPreferences = findViewById(R.id.carpoolPreferences);
-        Button bookRideButton = findViewById(R.id.bookRideButton);
+        Button findARideButton = findViewById(R.id.findARideButton);
+        Button cancelButton = findViewById(R.id.cancelButton);
+
+        cancelButton.setOnClickListener(v -> {
+            // Handle cancel button click
+            finish();
+        });
 
         // Open Autocomplete search when clicking dropoffLocation
         dropoffLocation.setFocusable(false);
