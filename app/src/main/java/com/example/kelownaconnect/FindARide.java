@@ -44,9 +44,9 @@ public class FindARide extends AppCompatActivity {
         filterETA = findViewById(R.id.filterETA);
 
         // Add mock driver data
-        drivers.add(new Driver("John Doe", 4.5, 20.0, "15 mins", "Sedan", 20));
-        drivers.add(new Driver("Jane Smith", 4.8, 25.0, "10 mins", "SUV", 15));
-        drivers.add(new Driver("Mark Lee", 4.2, 18.0, "20 mins", "Sedan", 2));
+        drivers.add(new Driver("John Doe", 4.5, 20.0, "15 mins", "Sedan"));
+        drivers.add(new Driver("Jane Smith", 4.8, 25.0, "10 mins", "SUV"));
+        drivers.add(new Driver("Mark Lee", 4.2, 18.0, "20 mins", "Sedan"));
 
         driverAdapter.updateList(drivers);
 

@@ -53,6 +53,7 @@
             android:id="@+id/bookButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="#007BFF"
             android:text="Book"
             android:layout_marginTop="8dp"/>
     </LinearLayout>
