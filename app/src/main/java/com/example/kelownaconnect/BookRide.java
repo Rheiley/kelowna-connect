@@ -91,10 +91,6 @@ public class BookRide extends AppCompatActivity {
                 Toast.makeText(BookRide.this, "Please select a departure time", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (preferences.isEmpty()) {
-                Toast.makeText(BookRide.this, "Please enter your carpool preferences", Toast.LENGTH_SHORT).show();
-                return;
-            }
 
             // TO-DO: Implement the logic to find a ride based on the input values
         });
