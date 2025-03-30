@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kelowna Connect"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ride Details"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp" />
+
+    <TextView android:id="@+id/rideDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Driver: Driver 1\nCar: Toyota Prius (Black)\nPickup location: [location]\nDropoff location: [location]\nRide duration: 00:08:34\nPrice per km: $1.10\nSubtotal: $3.30\nPoints earned: 50"
+        android:textSize="16sp"
+        android:layout_marginBottom="30dp" />
+
+    <Button
+        android:id="@+id/reviewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="#D3D3D3"
+        android:text="Leave a Review"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#D3D3D3"
+        android:text="Back"
+        android:textColor="#000000" />
+
+</LinearLayout>
