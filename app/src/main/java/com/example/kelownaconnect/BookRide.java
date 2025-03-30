@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
@@ -66,7 +67,36 @@ public class BookRide extends AppCompatActivity {
         });
 
         findARideButton.setOnClickListener(v -> {
-            // Handle find a ride button click
+            // Get input values
+            String pickup = pickupLocation.getText().toString().trim();
+            String dropoff = dropoffLocation.getText().toString().trim();
+            String passengers = passengerCount.getText().toString().trim();
+            String departure = departureTime.getText().toString().trim();
+            String preferences = carpoolPreferences.getText().toString().trim();
+
+            // Check for empty fields and show a toast for missing inputs
+            if (pickup.isEmpty()) {
+                Toast.makeText(BookRide.this, "Please enter a pickup location", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (dropoff.isEmpty()) {
+                Toast.makeText(BookRide.this, "Please enter a dropoff location", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (passengers.isEmpty()) {
+                Toast.makeText(BookRide.this, "Please enter the number of passengers", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (departure.isEmpty()) {
+                Toast.makeText(BookRide.this, "Please select a departure time", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (preferences.isEmpty()) {
+                Toast.makeText(BookRide.this, "Please enter your carpool preferences", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // TO-DO: Implement the logic to find a ride based on the input values
         });
 
         // Open Autocomplete search when clicking dropoffLocation
