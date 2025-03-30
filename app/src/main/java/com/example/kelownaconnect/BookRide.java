@@ -1,23 +1,38 @@
 package com.example.kelownaconnect;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.gms.common.api.Status;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.Autocomplete;
+import com.google.android.libraries.places.widget.AutocompleteActivity;
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+import com.google.android.libraries.places.api.Places;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
-import com.google.android.libraries.places.api.Places;
 
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.TimeZone;
 
-
 public class BookRide extends AppCompatActivity {
+
+    private static final int AUTOCOMPLETE_REQUEST_CODE = 1;
+    private EditText dropoffLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,50 +49,85 @@ public class BookRide extends AppCompatActivity {
         if (!Places.isInitialized()) {
             Places.initialize(getApplicationContext(), BuildConfig.GOOGLE_MAPS_API_KEY);
         }
+        PlacesClient placesClient = Places.createClient(this);
 
         // Views
         EditText pickupLocation = findViewById(R.id.pickupLocation);
-        EditText dropoffLocation = findViewById(R.id.dropoffLocation);
+        dropoffLocation = findViewById(R.id.dropoffLocation); // Store reference
         EditText passengerCount = findViewById(R.id.passengerCount);
         EditText departureTime = findViewById(R.id.departureTime);
         EditText carpoolPreferences = findViewById(R.id.carpoolPreferences);
         Button bookRideButton = findViewById(R.id.bookRideButton);
 
-        // Disable text input and enable click behavior
+        // Open Autocomplete search when clicking dropoffLocation
+        dropoffLocation.setFocusable(false);
+        dropoffLocation.setClickable(true);
+        dropoffLocation.setOnClickListener(v -> openPlaceSearch());
+
+        // Disable text input and enable click behavior for departure time
         departureTime.setFocusable(false);
         departureTime.setClickable(true);
-        departureTime.setOnClickListener(v -> {
-            // Get the current time
-            Calendar calendar = Calendar.getInstance();
-            int hour = calendar.get(Calendar.HOUR_OF_DAY);
-            int minute = calendar.get(Calendar.MINUTE);
+        departureTime.setOnClickListener(v -> openTimePicker());
+    }
 
-            // Create the MaterialTimePicker
-            MaterialTimePicker materialTimePicker = new MaterialTimePicker.Builder()
-                    .setHour(hour)
-                    .setMinute(minute)
-                    .setTimeFormat(TimeFormat.CLOCK_24H)
-                    .setInputMode(MaterialTimePicker.INPUT_MODE_KEYBOARD) // Allows users to type the time (optional)
-                    .build();
+    private void openPlaceSearch() {
+        List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG);
 
-            // Set listener to update EditText when time is selected
-            materialTimePicker.addOnPositiveButtonClickListener(v1 -> {
-                int selectedHour = materialTimePicker.getHour();
-                int selectedMinute = materialTimePicker.getMinute();
+        // Open Places Autocomplete Intent
+        Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields)
+                .build(BookRide.this);
+        startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE);
 
-                // Get the current timezone
-                TimeZone timeZone = TimeZone.getDefault();
-                String timeZoneDisplay = timeZone.getDisplayName(false, TimeZone.SHORT);
+    }
 
-                // Format the selected time and append the timezone
-                String formattedTime = String.format("%02d:%02d %s", selectedHour, selectedMinute, timeZoneDisplay);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-                // Set the departure time with the timezone
-                departureTime.setText(formattedTime);
-            });
+        if (requestCode == AUTOCOMPLETE_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK && data != null) {
+                Place place = Autocomplete.getPlaceFromIntent(data);
+                dropoffLocation.setText(place.getName()); // Set selected place to EditText
+                Log.i("BookRide", "Selected Place: " + place.getName() + ", " + place.getLatLng());
+            } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
+                Status status = Autocomplete.getStatusFromIntent(data);
+                Log.e("BookRide", "Error: " + status.getStatusMessage());
+            }
+        }
+    }
 
-            // Show the time picker
-            materialTimePicker.show(getSupportFragmentManager(), "TIME_PICKER");
+    private void openTimePicker() {
+        // Get the current time
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+
+        // Create the MaterialTimePicker
+        MaterialTimePicker materialTimePicker = new MaterialTimePicker.Builder()
+                .setHour(hour)
+                .setMinute(minute)
+                .setTimeFormat(TimeFormat.CLOCK_24H)
+                .setInputMode(MaterialTimePicker.INPUT_MODE_KEYBOARD)
+                .build();
+
+        // Set listener to update EditText when time is selected
+        materialTimePicker.addOnPositiveButtonClickListener(v1 -> {
+            int selectedHour = materialTimePicker.getHour();
+            int selectedMinute = materialTimePicker.getMinute();
+
+            // Get the current timezone
+            TimeZone timeZone = TimeZone.getDefault();
+            String timeZoneDisplay = timeZone.getDisplayName(false, TimeZone.SHORT);
+
+            // Format the selected time and append the timezone
+            String formattedTime = String.format("%02d:%02d %s", selectedHour, selectedMinute, timeZoneDisplay);
+
+            // Set the departure time with the timezone
+            EditText departureTime = findViewById(R.id.departureTime);
+            departureTime.setText(formattedTime);
         });
+
+        // Show the time picker
+        materialTimePicker.show(getSupportFragmentManager(), "TIME_PICKER");
     }
 }
