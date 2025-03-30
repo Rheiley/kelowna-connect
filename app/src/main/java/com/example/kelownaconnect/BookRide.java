@@ -97,10 +97,7 @@ public class BookRide extends AppCompatActivity {
 
             Intent intent = new Intent(this, FindARide.class);
             intent.putExtra("ride", ride);
-
-
-
-
+            startActivity(intent);
         });
 
         // Open Autocomplete search when clicking dropoffLocation
