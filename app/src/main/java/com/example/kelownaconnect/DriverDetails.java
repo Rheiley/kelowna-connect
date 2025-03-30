@@ -7,7 +7,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DriverDetails extends AppCompatActivity {
@@ -59,6 +61,17 @@ public class DriverDetails extends AppCompatActivity {
     }
 
     private void confirmBooking(Driver driver) {
-        // Handle booking confirmation logic here
+        new AlertDialog.Builder(this)
+                .setTitle("Confirm Booking")
+                .setMessage("Are you sure you want to book a ride with " + driver.getName() + "?")
+                .setPositiveButton("Confirm", (dialog, which) -> {
+                    // Handle the booking confirmation
+                    Toast.makeText(this, "Booking confirmed!", Toast.LENGTH_SHORT).show();
+                })
+                .setNegativeButton("Cancel", (dialog, which) -> {
+                    // Handle the cancel action
+                    dialog.dismiss();
+                })
+                .show();
     }
 }
