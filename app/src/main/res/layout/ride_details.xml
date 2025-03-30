@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
-    android:gravity="center_horizontal"
     android:background="#FFFFFF">
 
     <TextView
@@ -14,8 +13,11 @@
         android:text="Kelowna Connect"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:background="#FFFFFFF"
         android:padding="10dp"
-        android:layout_marginBottom="20dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/title"
@@ -24,30 +26,47 @@
         android:text="Ride Details"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/appTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView android:id="@+id/rideDetails"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/rideDetails"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="Driver: Driver 1\nCar: Toyota Prius (Black)\nPickup location: [location]\nDropoff location: [location]\nRide duration: 00:08:34\nPrice per km: $1.10\nSubtotal: $3.30\nPoints earned: 50"
         android:textSize="16sp"
-        android:layout_marginBottom="30dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
 
     <Button
         android:id="@+id/reviewButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="#D3D3D3"
+        android:background="#AF6B6B"
         android:text="Leave a Review"
-        android:textColor="#000000" />
+        android:textColor="#FFFFFF"
+        android:textColorLink="#2196F3"
+        app:layout_constraintBottom_toTopOf="@+id/backButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rideDetails" />
 
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#D3D3D3"
+        android:layout_marginBottom="16dp"
+        android:background="#020202"
         android:text="Back"
-        android:textColor="#000000" />
+        android:textColor="#FBFBFB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reviewButton" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

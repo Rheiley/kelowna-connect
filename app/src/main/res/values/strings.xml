@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Kelowna Connect</string>
+    <string name="Title">Kelowna Connect</string>
+    <string name="back">Back</string>
+    <string name="leave_a_review">Leave a Review</string>
+    <string name="ride_details">Driver: Driver 1\nCar: Toyota Prius (Black)\nPickup location: [location]\nDropoff location: [location]\nRide duration: 00:08:34\nPrice per km: $1.10\nSubtotal: $3.30\nPoints earned: 50</string>
+    <string name="sub_title">Ride Details</string>
 </resources>
