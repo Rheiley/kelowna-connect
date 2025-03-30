@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -59,9 +60,9 @@ public class BookRide extends AppCompatActivity {
         EditText departureTime = findViewById(R.id.departureTime);
         EditText carpoolPreferences = findViewById(R.id.carpoolPreferences);
         Button findARideButton = findViewById(R.id.findARideButton);
-        Button cancelButton = findViewById(R.id.cancelButton);
+        LinearLayout backButton = findViewById(R.id.backButtonContainer);
 
-        cancelButton.setOnClickListener(v -> {
+        backButton.setOnClickListener(v -> {
             // Handle cancel button click
             finish();
         });
