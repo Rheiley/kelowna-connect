@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,6 +56,10 @@ public class FindARide extends AppCompatActivity {
         filterRating.setOnCheckedChangeListener((buttonView, isChecked) -> applyFilters());
         filterPrice.setOnCheckedChangeListener((buttonView, isChecked) -> applyFilters());
         filterETA.setOnCheckedChangeListener((buttonView, isChecked) -> applyFilters());
+
+        // Back button
+        LinearLayout backButtonContainer = findViewById(R.id.backButtonContainer);
+        backButtonContainer.setOnClickListener(v -> finish());
     }
 
     private void applyFilters() {

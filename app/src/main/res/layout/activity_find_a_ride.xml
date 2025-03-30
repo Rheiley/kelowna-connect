@@ -7,6 +7,36 @@
     android:padding="16dp"
     tools:context=".FindARide">
 
+    <!-- Back Button with Text -->
+    <LinearLayout
+        android:id="@+id/backButtonContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp">
+
+        <!-- Arrow Icon -->
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:contentDescription="Back"
+            android:layout_marginEnd="8dp"/>
+
+        <!-- Back Text -->
+        <TextView
+            android:id="@+id/backText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
     <!-- Title -->
     <TextView
         android:id="@+id/findARideTitle"
@@ -17,7 +47,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backButtonContainer"
         android:layout_marginBottom="16dp" />
 
     <!-- Filter Section -->
