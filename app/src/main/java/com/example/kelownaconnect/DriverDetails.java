@@ -1,9 +1,11 @@
 package com.example.kelownaconnect;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class DriverDetails extends AppCompatActivity {
 
     private TextView driverName, driverStatus, driverSeats, driverRating, driverVehicle, driverCompletedRides, driverLanguages;
-    private Button viewReviewsButton, confirmBookingButton, backButton;
+    private Button viewReviewsButton, confirmBookingButton;
+    private LinearLayout backButton;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,17 +32,18 @@ public class DriverDetails extends AppCompatActivity {
         driverLanguages = findViewById(R.id.driverLanguages);
         viewReviewsButton = findViewById(R.id.viewReviewsButton);
         confirmBookingButton = findViewById(R.id.confirmBookingButton);
-        backButton = findViewById(R.id.backButton);
+        backButton = findViewById(R.id.backButtonContainer);
 
         // Get the driver data passed through the Intent
         Intent intent = getIntent();
         Driver selectedDriver = (Driver) intent.getSerializableExtra("selectedDriver");
 
         // Set driver details on the views
+        assert selectedDriver != null;
         driverName.setText(selectedDriver.getName());
         driverStatus.setText(selectedDriver.getStatus());
         driverSeats.setText(String.valueOf(selectedDriver.getSeatsAvailable()));
-        driverRating.setText(String.valueOf(selectedDriver.getRating() + "/5.0"));
+        driverRating.setText(selectedDriver.getRating() + "/5.0");
         driverVehicle.setText(selectedDriver.getVehicle());
         driverCompletedRides.setText(String.valueOf(selectedDriver.getCompletedRides()));
         driverLanguages.setText(selectedDriver.getLanguages());
@@ -46,7 +51,7 @@ public class DriverDetails extends AppCompatActivity {
         // Set onClickListeners for the buttons
         viewReviewsButton.setOnClickListener(v -> openReviewsPage(selectedDriver));
         confirmBookingButton.setOnClickListener(v -> confirmBooking(selectedDriver));
-        backButton.setOnClickListener(v -> onBackPressed());
+        backButton.setOnClickListener(v -> finish());
     }
 
     private void openReviewsPage(Driver driver) {
