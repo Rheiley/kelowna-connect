@@ -1,19 +1,17 @@
 package com.example.kelownaconnect;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class FindARide extends AppCompatActivity {
@@ -21,6 +19,7 @@ public class FindARide extends AppCompatActivity {
     private DriverAdapter driverAdapter;
     private List<Driver> drivers;
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,25 +27,46 @@ public class FindARide extends AppCompatActivity {
 
         // Initialize views
         recyclerView = findViewById(R.id.recyclerView);
+        Button ratingFilterButton = findViewById(R.id.ratingFilterButton);
+        Button priceFilterButton = findViewById(R.id.priceFilterButton);
+        Button etaFilterButton = findViewById(R.id.etaFilterButton);
+
         drivers = new ArrayList<>();
-        driverAdapter = new DriverAdapter(this, drivers, driver -> {
-            // Handle book button click
-            bookRide(driver);
-        });
+        driverAdapter = new DriverAdapter(this, drivers, driver -> bookRide(driver));
 
         recyclerView.setAdapter(driverAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Mock data for testing
-        drivers.add(new Driver("John Doe", 4.5, 20.0, "15 mins", "Sedan"));
-        drivers.add(new Driver("Jane Smith", 4.8, 25.0, "10 mins", "SUV"));
-        drivers.add(new Driver("Mark Lee", 4.2, 18.0, "20 mins", "Sedan"));
+        // Add mock driver data
+        drivers.add(new Driver("John Doe", 4.5, 20.0, "15 mins", "Sedan", 20));
+        drivers.add(new Driver("Jane Smith", 4.8, 25.0, "10 mins", "SUV", 15));
+        drivers.add(new Driver("Mark Lee", 4.2, 18.0, "20 mins", "Sedan", 2));
 
         driverAdapter.notifyDataSetChanged();
+
+        // Set up filter buttons
+        ratingFilterButton.setOnClickListener(v -> applyFilters("Rating"));
+        priceFilterButton.setOnClickListener(v -> applyFilters("Price"));
+        etaFilterButton.setOnClickListener(v -> applyFilters("ETA"));
     }
 
     private void bookRide(Driver driver) {
-        // Implement the booking functionality (e.g., navigating to the booking confirmation screen)
         Toast.makeText(this, "Booked with " + driver.getName(), Toast.LENGTH_SHORT).show();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private void applyFilters(String filter) {
+        switch (filter) {
+            case "Rating":
+                drivers.sort((d1, d2) -> Double.compare(d2.getRating(), d1.getRating()));
+                break;
+            case "Price":
+                drivers.sort(Comparator.comparingDouble(Driver::getEstimatedCost));
+                break;
+            case "ETA":
+                drivers.sort(Comparator.comparing(Driver::getEta));
+                break;
+        }
+        driverAdapter.notifyDataSetChanged();
     }
 }

@@ -51,13 +51,6 @@
             android:layout_height="wrap_content"
             android:text="ETA"
             android:layout_marginStart="8dp" />
-
-        <Button
-            android:id="@+id/distanceFilterButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Distance"
-            android:layout_marginStart="8dp" />
     </LinearLayout>
 
     <!-- RecyclerView for displaying the drivers -->

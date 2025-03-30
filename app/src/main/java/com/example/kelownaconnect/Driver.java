@@ -6,13 +6,15 @@ public class Driver {
     private double estimatedCost;
     private String eta;
     private String vehicle;
+    private double distanceInKilometers;
 
-    public Driver(String name, double rating, double estimatedCost, String eta, String vehicle) {
+    public Driver(String name, double rating, double estimatedCost, String eta, String vehicle, double distanceInKilometers) {
         this.name = name;
         this.rating = rating;
         this.estimatedCost = estimatedCost;
         this.eta = eta;
         this.vehicle = vehicle;
+        this.distanceInKilometers = distanceInKilometers;
     }
 
     public String getName() {
@@ -34,4 +36,6 @@ public class Driver {
     public String getVehicle() {
         return vehicle;
     }
+
+    public double getDistanceInKilometers(){return distanceInKilometers;}
 }
