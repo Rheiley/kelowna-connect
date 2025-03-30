@@ -20,7 +20,7 @@ public class DriverAdapter extends RecyclerView.Adapter<DriverAdapter.DriverView
     private OnDriverClickListener listener;
 
     public interface OnDriverClickListener {
-        void onBookButtonClick(Driver driver);
+        void onDriverClick(Driver driver);  // Update this interface to handle card clicks as well
     }
 
     public DriverAdapter(Context context, List<Driver> drivers, OnDriverClickListener listener) {
@@ -53,7 +53,11 @@ public class DriverAdapter extends RecyclerView.Adapter<DriverAdapter.DriverView
         holder.etaTextView.setText("ETA: " + driver.getEta());
         holder.vehicleTextView.setText("Vehicle: " + driver.getVehicle());
 
-        holder.bookButton.setOnClickListener(v -> listener.onBookButtonClick(driver));
+        // Set the click listener for the "Book" button
+        holder.bookButton.setOnClickListener(v -> listener.onDriverClick(driver));
+
+        // Set the click listener for the entire card (itemView)
+        holder.itemView.setOnClickListener(v -> listener.onDriverClick(driver));
     }
 
     @Override
@@ -80,3 +84,4 @@ public class DriverAdapter extends RecyclerView.Adapter<DriverAdapter.DriverView
         }
     }
 }
+

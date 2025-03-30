@@ -44,7 +44,7 @@ public class FindARide extends AppCompatActivity {
         drivers = new ArrayList<>();
         filteredDrivers = new ArrayList<>(drivers);
 
-        driverAdapter = new DriverAdapter(this, filteredDrivers, driver -> bookRide(driver));
+        driverAdapter = new DriverAdapter(this, filteredDrivers, this::bookRide);
 
         recyclerView.setAdapter(driverAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
