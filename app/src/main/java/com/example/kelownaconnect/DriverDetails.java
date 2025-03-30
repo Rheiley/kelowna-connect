@@ -38,7 +38,7 @@ public class DriverDetails extends AppCompatActivity {
         driverName.setText(selectedDriver.getName());
         driverStatus.setText(selectedDriver.getStatus());
         driverSeats.setText(String.valueOf(selectedDriver.getSeatsAvailable()));
-        driverRating.setText(String.valueOf(selectedDriver.getRating()));
+        driverRating.setText(String.valueOf(selectedDriver.getRating() + "/5.0"));
         driverVehicle.setText(selectedDriver.getVehicle());
         driverCompletedRides.setText(String.valueOf(selectedDriver.getCompletedRides()));
         driverLanguages.setText(selectedDriver.getLanguages());
