@@ -32,7 +32,7 @@ import java.util.TimeZone;
 public class BookRide extends AppCompatActivity {
 
     private static final int AUTOCOMPLETE_REQUEST_CODE = 1;
-    private EditText dropoffLocation;
+    private EditText activeLocationField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class BookRide extends AppCompatActivity {
 
         // Views
         EditText pickupLocation = findViewById(R.id.pickupLocation);
-        dropoffLocation = findViewById(R.id.dropoffLocation); // Store reference
+        EditText dropoffLocation = findViewById(R.id.dropoffLocation); // Store reference
         EditText passengerCount = findViewById(R.id.passengerCount);
         EditText departureTime = findViewById(R.id.departureTime);
         EditText carpoolPreferences = findViewById(R.id.carpoolPreferences);
@@ -62,7 +62,18 @@ public class BookRide extends AppCompatActivity {
         // Open Autocomplete search when clicking dropoffLocation
         dropoffLocation.setFocusable(false);
         dropoffLocation.setClickable(true);
-        dropoffLocation.setOnClickListener(v -> openPlaceSearch());
+        dropoffLocation.setOnClickListener(v -> {
+            activeLocationField = dropoffLocation;
+            openPlaceSearch();
+        });
+
+        // Open Autocomplete search when clicking pickupLocation
+        pickupLocation.setFocusable(false);
+        pickupLocation.setClickable(true);
+        pickupLocation.setOnClickListener(v -> {
+            activeLocationField = pickupLocation;
+            openPlaceSearch();
+        });
 
         // Disable text input and enable click behavior for departure time
         departureTime.setFocusable(false);
@@ -87,7 +98,9 @@ public class BookRide extends AppCompatActivity {
         if (requestCode == AUTOCOMPLETE_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK && data != null) {
                 Place place = Autocomplete.getPlaceFromIntent(data);
-                dropoffLocation.setText(place.getName()); // Set selected place to EditText
+                if (activeLocationField != null) {
+                    activeLocationField.setText(place.getName());
+                }
                 Log.i("BookRide", "Selected Place: " + place.getName() + ", " + place.getLatLng());
             } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
                 Status status = Autocomplete.getStatusFromIntent(data);
