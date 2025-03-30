@@ -2,7 +2,7 @@ package com.example.kelownaconnect;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,9 @@ public class FindARide extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DriverAdapter driverAdapter;
     private List<Driver> drivers;
+    private List<Driver> filteredDrivers;
+
+    private CheckBox filterRating, filterPrice, filterETA;
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
@@ -25,17 +28,20 @@ public class FindARide extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_a_ride);
 
-        // Initialize views
+        // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
-        Button ratingFilterButton = findViewById(R.id.ratingFilterButton);
-        Button priceFilterButton = findViewById(R.id.priceFilterButton);
-        Button etaFilterButton = findViewById(R.id.etaFilterButton);
-
         drivers = new ArrayList<>();
-        driverAdapter = new DriverAdapter(this, drivers, driver -> bookRide(driver));
+        filteredDrivers = new ArrayList<>(drivers);
+
+        driverAdapter = new DriverAdapter(this, filteredDrivers, driver -> bookRide(driver));
 
         recyclerView.setAdapter(driverAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Initialize filter checkboxes
+        filterRating = findViewById(R.id.filterRating);
+        filterPrice = findViewById(R.id.filterPrice);
+        filterETA = findViewById(R.id.filterETA);
 
         // Add mock driver data
         drivers.add(new Driver("John Doe", 4.5, 20.0, "15 mins", "Sedan", 20));
@@ -44,29 +50,41 @@ public class FindARide extends AppCompatActivity {
 
         driverAdapter.notifyDataSetChanged();
 
-        // Set up filter buttons
-        ratingFilterButton.setOnClickListener(v -> applyFilters("Rating"));
-        priceFilterButton.setOnClickListener(v -> applyFilters("Price"));
-        etaFilterButton.setOnClickListener(v -> applyFilters("ETA"));
+        // Set filter listeners
+        filterRating.setOnCheckedChangeListener((buttonView, isChecked) -> applyFilters());
+        filterPrice.setOnCheckedChangeListener((buttonView, isChecked) -> applyFilters());
+        filterETA.setOnCheckedChangeListener((buttonView, isChecked) -> applyFilters());
+    }
+
+    private void applyFilters() {
+        filteredDrivers = new ArrayList<>(drivers);
+
+        // Apply multiple sorting criteria dynamically
+        filteredDrivers.sort((d1, d2) -> {
+            int result = 0;
+
+            if (filterRating.isChecked()) {
+                result = Double.compare(d2.getRating(), d1.getRating()); // Higher rating first
+                if (result != 0) return result;
+            }
+
+            if (filterPrice.isChecked()) {
+                result = Double.compare(d1.getEstimatedCost(), d2.getEstimatedCost()); // Lower price first
+                if (result != 0) return result;
+            }
+
+            if (filterETA.isChecked()) {
+                result = d1.getEta().compareTo(d2.getEta()); // Earlier ETA first
+                if (result != 0) return result;
+            }
+
+            return result;
+        });
+
+        driverAdapter.updateList(filteredDrivers);
     }
 
     private void bookRide(Driver driver) {
         Toast.makeText(this, "Booked with " + driver.getName(), Toast.LENGTH_SHORT).show();
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private void applyFilters(String filter) {
-        switch (filter) {
-            case "Rating":
-                drivers.sort((d1, d2) -> Double.compare(d2.getRating(), d1.getRating()));
-                break;
-            case "Price":
-                drivers.sort(Comparator.comparingDouble(Driver::getEstimatedCost));
-                break;
-            case "ETA":
-                drivers.sort(Comparator.comparing(Driver::getEta));
-                break;
-        }
-        driverAdapter.notifyDataSetChanged();
     }
 }

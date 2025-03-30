@@ -7,7 +7,7 @@
     android:padding="16dp"
     tools:context=".FindARide">
 
-    <!-- Title/Text heading for the activity -->
+    <!-- Title -->
     <TextView
         android:id="@+id/findARideTitle"
         android:layout_width="wrap_content"
@@ -20,37 +20,43 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginBottom="16dp" />
 
-    <!-- Filter buttons -->
+    <!-- Filter Section -->
     <LinearLayout
-        android:id="@+id/filterButtonsContainer"
-        android:layout_width="0dp"
+        android:id="@+id/filterContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/findARideTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="16dp">
 
-        <Button
-            android:id="@+id/ratingFilterButton"
+        <TextView
+            android:id="@+id/filterLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rating" />
+            android:text="Apply Filters:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
 
-        <Button
-            android:id="@+id/priceFilterButton"
+        <CheckBox
+            android:id="@+id/filterRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Price"
-            android:layout_marginStart="8dp" />
+            android:text="Highest Rating" />
 
-        <Button
-            android:id="@+id/etaFilterButton"
+        <CheckBox
+            android:id="@+id/filterPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ETA"
-            android:layout_marginStart="8dp" />
+            android:text="Lowest Price" />
+
+        <CheckBox
+            android:id="@+id/filterETA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Earliest ETA" />
     </LinearLayout>
 
     <!-- RecyclerView for displaying the drivers -->
@@ -58,7 +64,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/filterButtonsContainer"
+        app:layout_constraintTop_toBottomOf="@id/filterContainer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
