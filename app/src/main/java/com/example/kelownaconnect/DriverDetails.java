@@ -66,7 +66,9 @@ public class DriverDetails extends AppCompatActivity {
                 .setMessage("Are you sure you want to book a ride with " + driver.getName() + "?")
                 .setPositiveButton("Confirm", (dialog, which) -> {
                     // Handle the booking confirmation
-                    Toast.makeText(this, "Booking confirmed!", Toast.LENGTH_SHORT).show();
+                    Intent confirmationIntent = new Intent(DriverDetails.this, RideBookingConfirmation.class);
+                    confirmationIntent.putExtra("selectedDriver", driver);
+                    startActivity(confirmationIntent);
                 })
                 .setNegativeButton("Cancel", (dialog, which) -> {
                     // Handle the cancel action
