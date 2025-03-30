@@ -21,7 +21,6 @@ import java.util.Comparator;
 import java.util.List;
 
 public class FindARide extends AppCompatActivity {
-    private RecyclerView recyclerView;
     private DriverAdapter driverAdapter;
     private List<Driver> drivers;
     private List<Driver> filteredDrivers;
@@ -40,7 +39,7 @@ public class FindARide extends AppCompatActivity {
         });
 
         // Initialize RecyclerView
-        recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         drivers = new ArrayList<>();
         filteredDrivers = new ArrayList<>(drivers);
 
