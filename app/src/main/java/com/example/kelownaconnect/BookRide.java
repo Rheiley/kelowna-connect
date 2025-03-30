@@ -93,6 +93,8 @@ public class BookRide extends AppCompatActivity {
             }
 
             // TO-DO: Implement the logic to find a ride based on the input values
+
+
         });
 
         // Open Autocomplete search when clicking dropoffLocation
