@@ -1,53 +1,49 @@
 package com.example.kelownaconnect;
 
-public class Ride {
-    private String pickupLocation;
-    private String dropoffLocation;
-    private int passengerCount;
-    private String departureTime;
-    private String carpoolPreferences;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Ride implements Parcelable {
     private String destination;
     private String status;
     private String time;
+    private int passengers;
+    private String preferences;
 
-    // Constructor for booking a ride
-    public Ride(String pickupLocation, String dropoffLocation, int passengerCount, String departureTime, String carpoolPreferences) {
-        this.pickupLocation = pickupLocation;
-        this.dropoffLocation = dropoffLocation;
-        this.passengerCount = passengerCount;
-        this.departureTime = departureTime;
-        this.carpoolPreferences = carpoolPreferences;
+    public Ride(String destination, String status, int passengers, String time, String preferences) {
+        this.destination = destination;
+        this.status = status;
+        this.passengers = passengers;
+        this.time = time;
+        this.preferences = preferences;
     }
 
-    // Constructor for displaying recent rides (destination, status, time)
-    public Ride(String destination, String status, String time) {
+    public Ride(String destination, String status, String time){
         this.destination = destination;
         this.status = status;
         this.time = time;
     }
 
-    // Getters for booking ride fields
-    public String getPickupLocation() {
-        return pickupLocation;
+    protected Ride(Parcel in) {
+        destination = in.readString();
+        status = in.readString();
+        time = in.readString();
+        passengers = in.readInt();
+        preferences = in.readString();
     }
 
-    public String getDropoffLocation() {
-        return dropoffLocation;
-    }
+    public static final Creator<Ride> CREATOR = new Creator<Ride>() {
+        @Override
+        public Ride createFromParcel(Parcel in) {
+            return new Ride(in);
+        }
 
-    public int getPassengerCount() {
-        return passengerCount;
-    }
+        @Override
+        public Ride[] newArray(int size) {
+            return new Ride[size];
+        }
+    };
 
-    public String getDepartureTime() {
-        return departureTime;
-    }
-
-    public String getCarpoolPreferences() {
-        return carpoolPreferences;
-    }
-
-    // Getters for recent ride fields
     public String getDestination() {
         return destination;
     }
@@ -58,5 +54,27 @@ public class Ride {
 
     public String getTime() {
         return time;
+    }
+
+    public int getPassengers() {
+        return passengers;
+    }
+
+    public String getPreferences() {
+        return preferences;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeString(destination);
+        parcel.writeString(status);
+        parcel.writeString(time);
+        parcel.writeInt(passengers);
+        parcel.writeString(preferences);
     }
 }

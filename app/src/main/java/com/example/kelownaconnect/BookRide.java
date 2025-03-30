@@ -95,6 +95,8 @@ public class BookRide extends AppCompatActivity {
             // TO-DO: Implement the logic to find a ride based on the input values
             Ride ride = new Ride(pickup, dropoff, Integer.parseInt(passengers), departure, preferences);
 
+            Intent intent = new Intent(this, FindARide.class);
+            intent.putExtra("ride", ride);
 
 
 
