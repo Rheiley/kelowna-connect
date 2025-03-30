@@ -5,6 +5,36 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="#FFFFFF">
+    <!-- Back Button with Text -->
+    <LinearLayout
+        android:id="@+id/backButtonContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp">
+
+        <!-- Arrow Icon -->
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:contentDescription="Back"
+            android:layout_marginEnd="8dp"/>
+
+        <!-- Back Text -->
+        <TextView
+            android:id="@+id/backText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/appTitle"
@@ -48,7 +78,8 @@
         android:layout_height="wrap_content"
         android:background="#AF6B6B"
         android:text="Leave a Review"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="#003366"
+        android:textColor="#000000"
         android:textColorLink="#2196F3"
         app:layout_constraintBottom_toTopOf="@+id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,6 +95,7 @@
         android:background="#020202"
         android:text="Back"
         android:textColor="#FBFBFB"
+        android:backgroundTint="#003366"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
