@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class DriverDetails extends AppCompatActivity {
 
-    private TextView driverName, driverBio, driverStatus, driverSeats, driverRating, driverVehicle, driverCompletedRides, driverLanguages;
+    private TextView driverName, driverStatus, driverSeats, driverRating, driverVehicle, driverCompletedRides, driverLanguages;
     private Button viewReviewsButton, confirmBookingButton, backButton;
 
     @Override
@@ -20,7 +20,6 @@ public class DriverDetails extends AppCompatActivity {
 
         // Initialize views
         driverName = findViewById(R.id.driverName);
-        driverBio = findViewById(R.id.driverBio);
         driverStatus = findViewById(R.id.driverStatus);
         driverSeats = findViewById(R.id.driverSeats);
         driverRating = findViewById(R.id.driverRating);
@@ -37,7 +36,6 @@ public class DriverDetails extends AppCompatActivity {
 
         // Set driver details on the views
         driverName.setText(selectedDriver.getName());
-        driverBio.setText(selectedDriver.getBio());
         driverStatus.setText(selectedDriver.getStatus());
         driverSeats.setText(String.valueOf(selectedDriver.getSeatsAvailable()));
         driverRating.setText(String.valueOf(selectedDriver.getRating()));

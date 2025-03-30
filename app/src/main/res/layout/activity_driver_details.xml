@@ -17,66 +17,45 @@
         android:src="@drawable/profile_photo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="Driver Image"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Driver Name -->
     <TextView
-        android:id="@+id/driverName"
+        android:id="@+id/driverNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Driver Name"
-        android:textSize="22sp"
+        android:text="Name:"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/driverImage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginTop="8dp"/>
 
-    <!-- Driver Bio Label -->
     <TextView
-        android:id="@+id/driverBioLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bio"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/driverName"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="4dp"/>
-
-    <!-- Driver Bio Textbox -->
-    <TextView
-        android:id="@+id/driverBio"
+        android:id="@+id/driverName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Bio: Lorem ipsum dolor sit amet."
-        android:padding="12dp"
-        android:background="@drawable/textbox_background"
-        android:maxLines="4"
-        android:ellipsize="end"
-        app:layout_constraintTop_toBottomOf="@id/driverBioLabel"
+        app:layout_constraintTop_toBottomOf="@id/driverNameLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="8dp"/>
 
     <!-- Driver Status -->
     <TextView
         android:id="@+id/driverStatusLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Status"
+        android:text="Status:"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/driverBio"
+        app:layout_constraintTop_toBottomOf="@id/driverName"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="4dp"/>
+        android:layout_marginTop="8dp"/>
 
     <TextView
         android:id="@+id/driverStatus"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Available"
         app:layout_constraintTop_toBottomOf="@id/driverStatusLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,18 +66,17 @@
         android:id="@+id/driverSeatsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seats Left"
+        android:text="Seats Left:"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/driverStatus"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="4dp"/>
+        android:layout_marginTop="8dp"/>
 
     <TextView
         android:id="@+id/driverSeats"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="4"
         app:layout_constraintTop_toBottomOf="@id/driverSeatsLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,18 +87,17 @@
         android:id="@+id/driverRatingLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rating"
+        android:text="Rating:"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/driverSeats"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="4dp"/>
+        android:layout_marginTop="8dp"/>
 
     <TextView
         android:id="@+id/driverRating"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="4.5"
         app:layout_constraintTop_toBottomOf="@id/driverRatingLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,18 +108,17 @@
         android:id="@+id/driverVehicleLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vehicle"
+        android:text="Vehicle:"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/driverRating"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="4dp"/>
+        android:layout_marginTop="8dp"/>
 
     <TextView
         android:id="@+id/driverVehicle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Sedan"
         app:layout_constraintTop_toBottomOf="@id/driverVehicleLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -153,18 +129,17 @@
         android:id="@+id/driverCompletedRidesLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Completed Rides"
+        android:text="Completed Rides:"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/driverVehicle"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="4dp"/>
+        android:layout_marginTop="8dp"/>
 
     <TextView
         android:id="@+id/driverCompletedRides"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="120"
         app:layout_constraintTop_toBottomOf="@id/driverCompletedRidesLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -175,18 +150,17 @@
         android:id="@+id/driverLanguagesLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Languages"
+        android:text="Languages:"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/driverCompletedRides"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="4dp"/>
+        android:layout_marginTop="8dp"/>
 
     <TextView
         android:id="@+id/driverLanguages"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="English, French"
         app:layout_constraintTop_toBottomOf="@id/driverLanguagesLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
