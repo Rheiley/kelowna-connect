@@ -65,6 +65,10 @@ public class BookRide extends AppCompatActivity {
             finish();
         });
 
+        findARideButton.setOnClickListener(v -> {
+            // Handle find a ride button click
+        });
+
         // Open Autocomplete search when clicking dropoffLocation
         dropoffLocation.setFocusable(false);
         dropoffLocation.setClickable(true);
