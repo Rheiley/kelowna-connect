@@ -49,6 +49,8 @@
             android:text="Vehicle: Sedan"
             android:textSize="14sp"/>
 
+        <!-- Hint Text for Tapping to Preview Driver -->
+
         <Button
             android:id="@+id/bookButton"
             android:layout_width="wrap_content"
@@ -56,5 +58,16 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="#007BFF"
             android:text="Book" />
+
+        <TextView
+            android:id="@+id/previewHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Tap to preview the driver"
+            android:textSize="14sp"
+            android:textColor="#6C757D"
+            android:textStyle="italic"
+            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
