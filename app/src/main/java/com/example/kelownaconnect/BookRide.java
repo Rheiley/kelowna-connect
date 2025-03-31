@@ -145,6 +145,7 @@ public class BookRide extends AppCompatActivity {
 
         NumberPicker numberPicker = view.findViewById(R.id.numberPicker);
         Button confirmButton = view.findViewById(R.id.confirmButton);
+        Button cancelButton = view.findViewById(R.id.cancelButton);
 
         numberPicker.setMinValue(1);
         numberPicker.setMaxValue(10);
@@ -155,6 +156,8 @@ public class BookRide extends AppCompatActivity {
             passengerCount.setText(String.valueOf(selectedNumber));
             bottomSheetDialog.dismiss();
         });
+
+        cancelButton.setOnClickListener(v -> bottomSheetDialog.dismiss());
 
         bottomSheetDialog.show();
     }
