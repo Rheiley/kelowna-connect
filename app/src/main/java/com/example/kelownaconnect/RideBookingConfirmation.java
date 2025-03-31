@@ -46,6 +46,7 @@ public class RideBookingConfirmation extends AppCompatActivity {
 
 //        pickupLocation.setText("Pickup Location: " + ride.getPickupLocation());
 //        destination.setText("Destination: " + ride.getDestination());
+        assert driver != null;
         eta.setText("Estimated Time of Arrival: " + driver.getEta());
 
         // Set onClickListener for Home button
