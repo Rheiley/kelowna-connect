@@ -4,89 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RideBookingConfirmation">
+    tools:context=".RideBookingConfirmation"
+    android:padding="16dp">
 
-    <!-- Confirmation Message -->
-    <TextView
-        android:id="@+id/confirmationMessage"
-        android:layout_width="wrap_content"
+    <!-- Confirmation Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/confirmationCard"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Your ride has been confirmed!"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_marginTop="24dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp" />
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
 
-    <!-- Driver Details -->
-    <TextView
-        android:id="@+id/driverDetails"
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/confirmationMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your ride is on the way"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/driverDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Driver: John Doe\nVehicle: Sedan\nRating: 4.5/5"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Location Details Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/locationDetailsCard"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Driver: John Doe\nVehicle: Sedan\nRating: 4.5/5"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/confirmationMessage"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/confirmationCard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp" />
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
 
-    <!-- Pickup Location -->
-    <TextView
-        android:id="@+id/pickupLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pickup Location: Downtown"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/driverDetails"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
-    <!-- Destination -->
-    <TextView
-        android:id="@+id/destination"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Destination: Airport"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/pickupLocation"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+            <TextView
+                android:id="@+id/pickupLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pickup Location: Downtown"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp"/>
 
-    <!-- ETA -->
-    <TextView
-        android:id="@+id/eta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Estimated Time of Arrival: 15 mins"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/destination"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+            <TextView
+                android:id="@+id/destination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Destination: Airport"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp"/>
 
-    <!-- Home Button -->
-    <Button
+            <TextView
+                android:id="@+id/eta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estimated Arrival: 15 min"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/homeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="280dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="188dp"
+        android:backgroundTint="#007BFF"
         android:text="Home"
-        app:layout_constraintTop_toBottomOf="@id/eta"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        app:cornerRadius="16dp"
+        app:icon="@drawable/baseline_home_24"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"/>
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Cancel Ride Button -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/cancelRideButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="280dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="#007BFF"
         android:text="Cancel Ride"
-        app:layout_constraintTop_toBottomOf="@id/homeButton"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        app:cornerRadius="16dp"
+        app:icon="@drawable/baseline_cancel_24"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
-
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeButton"
+        app:layout_constraintVertical_bias="0.434" />
 </androidx.constraintlayout.widget.ConstraintLayout>
