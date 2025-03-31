@@ -81,7 +81,7 @@ public class BookRide extends AppCompatActivity {
                 return;
             }
             if (destination.isEmpty()) {
-                Toast.makeText(BookRide.this, "Please enter a dropoff location", Toast.LENGTH_SHORT).show();
+                Toast.makeText(BookRide.this, "Please enter a destination", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (numberOfPassengers.isEmpty()) {

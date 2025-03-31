@@ -98,7 +98,7 @@
         android:id="@+id/dropoffLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter destination"
+        android:hint="Enter your destination"
         app:layout_constraintTop_toBottomOf="@id/destinationLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
