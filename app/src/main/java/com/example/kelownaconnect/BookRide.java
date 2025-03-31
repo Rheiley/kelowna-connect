@@ -1,5 +1,6 @@
 package com.example.kelownaconnect;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -55,7 +56,7 @@ public class BookRide extends AppCompatActivity {
         if (!Places.isInitialized()) {
             Places.initialize(getApplicationContext(), BuildConfig.GOOGLE_MAPS_API_KEY);
         }
-        PlacesClient placesClient = Places.createClient(this);
+//        PlacesClient placesClient = Places.createClient(this);
 
         // Views
         EditText pickupLocation = findViewById(R.id.pickupLocation);
@@ -180,7 +181,7 @@ public class BookRide extends AppCompatActivity {
 
     private void openPassengerPicker() {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        View view = getLayoutInflater().inflate(R.layout.dialog_number_picker, null);
+        @SuppressLint("InflateParams") View view = getLayoutInflater().inflate(R.layout.dialog_number_picker, null);
         bottomSheetDialog.setContentView(view);
 
         NumberPicker numberPicker = view.findViewById(R.id.numberPicker);
@@ -215,6 +216,7 @@ public class BookRide extends AppCompatActivity {
                 }
                 Log.i("BookRide", "Selected Place: " + place.getName() + ", " + place.getLatLng());
             } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
+                assert data != null;
                 Status status = Autocomplete.getStatusFromIntent(data);
                 Log.e("BookRide", "Error: " + status.getStatusMessage());
             }
@@ -245,7 +247,7 @@ public class BookRide extends AppCompatActivity {
             String timeZoneDisplay = timeZone.getDisplayName(false, TimeZone.SHORT);
 
             // Format the selected time and append the timezone
-            String formattedTime = String.format("%02d:%02d %s", selectedHour, selectedMinute, timeZoneDisplay);
+            @SuppressLint("DefaultLocale") String formattedTime = String.format("%02d:%02d %s", selectedHour, selectedMinute, timeZoneDisplay);
 
             // Set the departure time with the timezone
             EditText departureTime = findViewById(R.id.departureTime);
