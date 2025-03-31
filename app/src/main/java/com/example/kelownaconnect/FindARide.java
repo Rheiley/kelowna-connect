@@ -24,6 +24,7 @@ public class FindARide extends AppCompatActivity {
     private DriverAdapter driverAdapter;
     private List<Driver> drivers;
     private List<Driver> filteredDrivers;
+    private Ride ride;
 
     private CheckBox filterRating, filterPrice, filterETA;
 
@@ -37,6 +38,8 @@ public class FindARide extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        ride = getIntent().getParcelableExtra("ride");
 
         // Initialize RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
@@ -101,6 +104,7 @@ public class FindARide extends AppCompatActivity {
     private void bookRide(Driver driver) {
         Intent intent = new Intent(this, DriverDetails.class);
         intent.putExtra("selectedDriver", driver);
+        intent.putExtra("ride", ride);
         startActivity(intent);
     }
 }

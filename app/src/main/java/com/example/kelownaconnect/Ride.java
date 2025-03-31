@@ -4,15 +4,25 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Ride implements Parcelable {
+    private String pickupLocation;
     private String destination;
     private String status;
     private String time;
     private int passengers;
     private String preferences;
 
-    public Ride(String destination, String status, int passengers, String time, String preferences) {
+    public Ride(String pickupLocation, String destination, String status, int passengers, String time, String preferences) {
+        this.pickupLocation = pickupLocation;
         this.destination = destination;
         this.status = status;
+        this.passengers = passengers;
+        this.time = time;
+        this.preferences = preferences;
+    }
+
+    public Ride(String pickupLocation, String destination, int passengers, String time, String preferences) {
+        this.pickupLocation = pickupLocation;
+        this.destination = destination;
         this.passengers = passengers;
         this.time = time;
         this.preferences = preferences;
@@ -25,6 +35,7 @@ public class Ride implements Parcelable {
     }
 
     protected Ride(Parcel in) {
+        pickupLocation = in.readString();
         destination = in.readString();
         status = in.readString();
         time = in.readString();
@@ -56,6 +67,8 @@ public class Ride implements Parcelable {
         return time;
     }
 
+    public String getPickupLocation() {return pickupLocation;}
+
     public int getPassengers() {
         return passengers;
     }
@@ -71,6 +84,7 @@ public class Ride implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeString(pickupLocation);
         parcel.writeString(destination);
         parcel.writeString(status);
         parcel.writeString(time);

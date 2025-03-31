@@ -1,5 +1,6 @@
 package com.example.kelownaconnect;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,9 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RideBookingConfirmation extends AppCompatActivity {
 
-    private TextView confirmationMessage, driverDetails, pickupLocation, destination, eta;
+    private TextView pickupLocation, confirmationMessage, driverDetails, destination, eta;
     private Button homeButton, cancelRideButton;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +27,12 @@ public class RideBookingConfirmation extends AppCompatActivity {
         eta = findViewById(R.id.eta);
         homeButton = findViewById(R.id.homeButton);
         cancelRideButton = findViewById(R.id.cancelRideButton);
+        pickupLocation = findViewById(R.id.pickupLocation);
 
         // Get the driver and ride details passed from the previous activity
         Intent intent = getIntent();
         Driver driver = (Driver) intent.getSerializableExtra("selectedDriver");
+        Ride ride = intent.getParcelableExtra("ride");
 
         // Set the confirmation message
         confirmationMessage.setText("Your ride has been confirmed!");
@@ -40,14 +44,9 @@ public class RideBookingConfirmation extends AppCompatActivity {
                     "\nRating: " + driver.getRating() + "/5.0");
         }
 
-        // Set the pickup location, destination, and ETA (These are passed as extras in the intent)
-        String pickupLoc = intent.getStringExtra("pickupLocation");
-        String destinationLoc = intent.getStringExtra("destination");
-        String etaTime = intent.getStringExtra("eta");
-
-        pickupLocation.setText("Pickup Location: " + pickupLoc);
-        destination.setText("Destination: " + destinationLoc);
-        eta.setText("Estimated Time of Arrival: " + etaTime);
+        pickupLocation.setText("Pickup Location: " + ride.getPickupLocation());
+        destination.setText("Destination: " + ride.getDestination());
+        eta.setText("Estimated Time of Arrival: " + driver.getEta());
 
         // Set onClickListener for Home button
         homeButton.setOnClickListener(v -> {

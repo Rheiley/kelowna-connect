@@ -17,6 +17,7 @@ public class DriverDetails extends AppCompatActivity {
     private TextView driverName, driverStatus, driverSeats, driverRating, driverVehicle, driverCompletedRides, driverLanguages;
     private Button viewReviewsButton, confirmBookingButton;
     private LinearLayout backButton;
+    private Ride ride;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -39,6 +40,7 @@ public class DriverDetails extends AppCompatActivity {
         // Get the driver data passed through the Intent
         Intent intent = getIntent();
         Driver selectedDriver = (Driver) intent.getSerializableExtra("selectedDriver");
+        ride = intent.getParcelableExtra("ride");
 
         // Set driver details on the views
         assert selectedDriver != null;
@@ -49,6 +51,7 @@ public class DriverDetails extends AppCompatActivity {
         driverVehicle.setText(selectedDriver.getVehicle());
         driverCompletedRides.setText(String.valueOf(selectedDriver.getCompletedRides()));
         driverLanguages.setText(selectedDriver.getLanguages());
+
 
         // Set onClickListeners for the buttons
         viewReviewsButton.setOnClickListener(v -> openReviewsPage(selectedDriver));
@@ -68,6 +71,7 @@ public class DriverDetails extends AppCompatActivity {
                     // Handle the booking confirmation
                     Intent confirmationIntent = new Intent(DriverDetails.this, RideBookingConfirmation.class);
                     confirmationIntent.putExtra("selectedDriver", driver);
+                    confirmationIntent.putExtra("ride", ride);
                     startActivity(confirmationIntent);
                 })
                 .setNegativeButton("Cancel", (dialog, which) -> {
