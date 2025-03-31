@@ -99,7 +99,7 @@ public class BookRide extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Open Autocomplete search when clicking dropoffLocation
+        // Open Autocomplete search when clicking destination
         destination.setFocusable(false);
         destination.setClickable(true);
         destination.setOnClickListener(v -> {
@@ -115,6 +115,7 @@ public class BookRide extends AppCompatActivity {
             openPlaceSearch();
         });
 
+        // Open menu for selecting number of passengers
         numberOfPassengers.setFocusable(false);
         numberOfPassengers.setClickable(true);
         numberOfPassengers.setOnClickListener(v -> openPassengerPicker());
