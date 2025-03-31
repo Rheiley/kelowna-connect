@@ -1,5 +1,6 @@
 package com.example.kelownaconnect;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private static List<Ride> recentRides = new ArrayList<>();
+    private RecentRidesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +42,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Create mock data for recent rides
-        List<Ride> mockRides = new ArrayList<>();
-        mockRides.add(new Ride("Vancouver", "Upcoming", "12:30 PM"));
-        mockRides.add(new Ride("Kelowna", "Completed", "2:00 PM"));
-        mockRides.add(new Ride("Surrey", "Completed", "10:00 AM"));
+        if (recentRides.isEmpty()) {
+            recentRides.add(new Ride("UBCO", "Lake Country", "Completed", "12:30 PM"));
+            recentRides.add(new Ride("Lake Country", "Vernon", "Completed", "2:00 PM"));
+            recentRides.add(new Ride("Innovation Drive", "UBCO", "Completed", "10:00 AM"));
+        }
 
         // Set the adapter
-        RecentRidesAdapter adapter = new RecentRidesAdapter(mockRides);
+        adapter = new RecentRidesAdapter(recentRides);
         recyclerView.setAdapter(adapter);
+
+        Ride newRide = getIntent().getParcelableExtra("newRide");
+        if (newRide != null) {
+            addNewRide(newRide);
+        }
 
         bookRideButton.setOnClickListener(v -> {
             // Handle book ride button click
@@ -54,5 +63,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, BookRide.class));
         });
 
+    }
+    @SuppressLint("NotifyDataSetChanged")
+    private void addNewRide(Ride ride) {
+        recentRides.add(0, ride); // Add new ride at the top
+        adapter.notifyDataSetChanged();
     }
 }
