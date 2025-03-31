@@ -21,7 +21,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.common.api.Status;
 import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
@@ -39,7 +38,7 @@ import java.util.TimeZone;
 public class BookRide extends AppCompatActivity {
 
     private static final int AUTOCOMPLETE_REQUEST_CODE = 1;
-    private EditText activeLocationField, passengerCount, carpoolPreferences;
+    private EditText pickupLocation, destination, numberOfPassengers, departureTime, carpoolPreferences, activeLocationField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,59 +55,55 @@ public class BookRide extends AppCompatActivity {
         if (!Places.isInitialized()) {
             Places.initialize(getApplicationContext(), BuildConfig.GOOGLE_MAPS_API_KEY);
         }
-//        PlacesClient placesClient = Places.createClient(this);
 
         // Views
-        EditText pickupLocation = findViewById(R.id.pickupLocation);
-        EditText dropoffLocation = findViewById(R.id.dropoffLocation); // Store reference
-        passengerCount = findViewById(R.id.passengerCount);
-        EditText departureTime = findViewById(R.id.departureTime);
+        pickupLocation = findViewById(R.id.pickupLocation);
+        destination = findViewById(R.id.dropoffLocation); // Store reference
+        numberOfPassengers = findViewById(R.id.passengerCount);
+        departureTime = findViewById(R.id.departureTime);
         carpoolPreferences = findViewById(R.id.carpoolPreferences);
         Button findARideButton = findViewById(R.id.findARideButton);
         LinearLayout backButton = findViewById(R.id.backButtonContainer);
 
-        backButton.setOnClickListener(v -> {
-            // Handle cancel button click
-            finish();
-        });
+        backButton.setOnClickListener(v -> finish());
 
         findARideButton.setOnClickListener(v -> {
             // Get input values
-            String pickup = pickupLocation.getText().toString().trim();
-            String dropoff = dropoffLocation.getText().toString().trim();
-            String passengers = passengerCount.getText().toString().trim();
-            String departure = departureTime.getText().toString().trim();
-            String preferences = carpoolPreferences.getText().toString().trim();
+            String pickupLocation = this.pickupLocation.getText().toString().trim();
+            String destination = this.destination.getText().toString().trim();
+            String numberOfPassengers = this.numberOfPassengers.getText().toString().trim();
+            String departureTime = this.departureTime.getText().toString().trim();
+            String carpoolPreferences = this.carpoolPreferences.getText().toString().trim();
 
             // Check for empty fields and show a toast for missing inputs
-            if (pickup.isEmpty()) {
+            if (pickupLocation.isEmpty()) {
                 Toast.makeText(BookRide.this, "Please enter a pickup location", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (dropoff.isEmpty()) {
+            if (destination.isEmpty()) {
                 Toast.makeText(BookRide.this, "Please enter a dropoff location", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (passengers.isEmpty()) {
+            if (numberOfPassengers.isEmpty()) {
                 Toast.makeText(BookRide.this, "Please enter the number of passengers", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (departure.isEmpty()) {
+            if (departureTime.isEmpty()) {
                 Toast.makeText(BookRide.this, "Please select a departure time", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            Ride ride = new Ride(pickup, dropoff, Integer.parseInt(passengers), departure, preferences);
+            Ride ride = new Ride(pickupLocation, destination, Integer.parseInt(numberOfPassengers), departureTime, carpoolPreferences);
             Intent intent = new Intent(this, FindARide.class);
             intent.putExtra("ride", ride);
             startActivity(intent);
         });
 
         // Open Autocomplete search when clicking dropoffLocation
-        dropoffLocation.setFocusable(false);
-        dropoffLocation.setClickable(true);
-        dropoffLocation.setOnClickListener(v -> {
-            activeLocationField = dropoffLocation;
+        destination.setFocusable(false);
+        destination.setClickable(true);
+        destination.setOnClickListener(v -> {
+            activeLocationField = destination;
             openPlaceSearch();
         });
 
@@ -120,9 +115,9 @@ public class BookRide extends AppCompatActivity {
             openPlaceSearch();
         });
 
-        passengerCount.setFocusable(false);
-        passengerCount.setClickable(true);
-        passengerCount.setOnClickListener(v -> openPassengerPicker());
+        numberOfPassengers.setFocusable(false);
+        numberOfPassengers.setClickable(true);
+        numberOfPassengers.setOnClickListener(v -> openPassengerPicker());
 
         // Disable text input and enable click behavior for departure time
         departureTime.setFocusable(false);
@@ -132,7 +127,6 @@ public class BookRide extends AppCompatActivity {
         carpoolPreferences.setFocusable(false);
         carpoolPreferences.setClickable(true);
         carpoolPreferences.setOnClickListener(v -> openCarpoolPreferencesDialog());
-
     }
 
     private void openCarpoolPreferencesDialog() {
@@ -167,8 +161,6 @@ public class BookRide extends AppCompatActivity {
         builder.show();
     }
 
-
-
     private void openPlaceSearch() {
         List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG);
 
@@ -194,7 +186,7 @@ public class BookRide extends AppCompatActivity {
 
         confirmButton.setOnClickListener(v -> {
             int selectedNumber = numberPicker.getValue();
-            passengerCount.setText(String.valueOf(selectedNumber));
+            numberOfPassengers.setText(String.valueOf(selectedNumber));
             bottomSheetDialog.dismiss();
         });
 

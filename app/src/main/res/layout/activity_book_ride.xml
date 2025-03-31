@@ -82,10 +82,10 @@
         android:layout_marginEnd="16dp"/>
 
     <TextView
-        android:id="@+id/dropoffLocationLabel"
+        android:id="@+id/destinationLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dropoff Location"
+        android:text="Destination"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/pickupLocation"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,8 +98,8 @@
         android:id="@+id/dropoffLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter dropoff location"
-        app:layout_constraintTop_toBottomOf="@id/dropoffLocationLabel"
+        android:hint="Enter destination"
+        app:layout_constraintTop_toBottomOf="@id/destinationLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"
