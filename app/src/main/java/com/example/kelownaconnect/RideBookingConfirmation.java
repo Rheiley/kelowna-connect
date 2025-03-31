@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RideBookingConfirmation extends AppCompatActivity {
 
-    private TextView pickupLocation, confirmationMessage, driverDetails, destination, eta;
+    private TextView pickupLocation, confirmationMessage, driverDetails, destination, eta, vehicleDetails, driverRating;
     private Button homeButton, cancelRideButton;
 
     @SuppressLint("SetTextI18n")
@@ -28,6 +28,8 @@ public class RideBookingConfirmation extends AppCompatActivity {
         homeButton = findViewById(R.id.homeButton);
         cancelRideButton = findViewById(R.id.cancelRideButton);
         pickupLocation = findViewById(R.id.pickupLocation);
+        vehicleDetails = findViewById(R.id.vehicleDetails);
+        driverRating = findViewById(R.id.driverRating);
 
         // Get the driver and ride details passed from the previous activity
         Intent intent = getIntent();
@@ -39,9 +41,9 @@ public class RideBookingConfirmation extends AppCompatActivity {
 
         // Set the driver details
         if (driver != null) {
-            driverDetails.setText("Driver: " + driver.getName() +
-                    "\nVehicle: " + driver.getVehicle() +
-                    "\nRating: " + driver.getRating() + "/5.0");
+            driverDetails.setText("Driver: " + driver.getName());
+            vehicleDetails.setText("Vehicle: " + driver.getVehicle());
+            driverRating.setText("Rating: " + driver.getRating() + "/5.0");
         }
 
 //        pickupLocation.setText("Pickup Location: " + ride.getPickupLocation());

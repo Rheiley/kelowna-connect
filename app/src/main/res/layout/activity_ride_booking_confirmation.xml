@@ -39,10 +39,27 @@
                 android:id="@+id/driverDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Driver: John Doe\nVehicle: Sedan\nRating: 4.5/5"
+                android:text="Driver: John Doe"
                 android:textSize="18sp"
                 android:textColor="@android:color/black"
                 android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/vehicleDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vehicle: Sedan"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/driverRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rating: 4.5/5"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -88,11 +105,11 @@
                 android:layout_height="wrap_content"
                 android:text="Estimated Arrival: 15 min"
                 android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:layout_marginBottom="8dp"/>
+                android:textColor="@android:color/black"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <!-- Buttons -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/homeButton"
         android:layout_width="280dp"
