@@ -53,6 +53,9 @@ public class RideBookingConfirmation extends AppCompatActivity {
         homeButton.setOnClickListener(v -> {
             // Redirect to the Home activity (or main screen)
             Intent homeIntent = new Intent(RideBookingConfirmation.this, MainActivity.class);
+            assert ride != null;
+            ride.setStatus("Upcoming");
+            homeIntent.putExtra("newRide", ride);
             startActivity(homeIntent);
             finish();  // Finish the current activity
         });

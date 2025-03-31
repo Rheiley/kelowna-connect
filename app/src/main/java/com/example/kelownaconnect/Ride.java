@@ -28,7 +28,8 @@ public class Ride implements Parcelable {
         this.preferences = preferences;
     }
 
-    public Ride(String destination, String status, String time){
+    public Ride(String pickupLocation, String destination, String status, String time){
+        this.pickupLocation = pickupLocation;
         this.destination = destination;
         this.status = status;
         this.time = time;
@@ -75,6 +76,10 @@ public class Ride implements Parcelable {
 
     public String getPreferences() {
         return preferences;
+    }
+
+    public void setStatus(String status){
+        this.status = status;
     }
 
     @Override
