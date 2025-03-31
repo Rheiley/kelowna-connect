@@ -39,6 +39,8 @@ public class BookRide extends AppCompatActivity {
 
     private static final int AUTOCOMPLETE_REQUEST_CODE = 1;
     private EditText pickupLocation, destination, numberOfPassengers, departureTime, carpoolPreferences, activeLocationField;
+    Button findARideButton;
+    LinearLayout backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,19 +53,8 @@ public class BookRide extends AppCompatActivity {
             return insets;
         });
 
-        // Initialize the Places API
-        if (!Places.isInitialized()) {
-            Places.initialize(getApplicationContext(), BuildConfig.GOOGLE_MAPS_API_KEY);
-        }
-
-        // Views
-        pickupLocation = findViewById(R.id.pickupLocation);
-        destination = findViewById(R.id.dropoffLocation); // Store reference
-        numberOfPassengers = findViewById(R.id.passengerCount);
-        departureTime = findViewById(R.id.departureTime);
-        carpoolPreferences = findViewById(R.id.carpoolPreferences);
-        Button findARideButton = findViewById(R.id.findARideButton);
-        LinearLayout backButton = findViewById(R.id.backButtonContainer);
+        initializePlacesAPI();
+        initializeViews();
 
         backButton.setOnClickListener(v -> finish());
 
@@ -130,6 +121,12 @@ public class BookRide extends AppCompatActivity {
         carpoolPreferences.setOnClickListener(v -> openCarpoolPreferencesDialog());
     }
 
+    private void initializePlacesAPI(){
+        if (!Places.isInitialized()) {
+            Places.initialize(getApplicationContext(), BuildConfig.GOOGLE_MAPS_API_KEY);
+        }
+    }
+
     private void openCarpoolPreferencesDialog() {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
         builder.setTitle("Select Carpool Preferences");
@@ -160,6 +157,16 @@ public class BookRide extends AppCompatActivity {
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
 
         builder.show();
+    }
+
+    private void initializeViews(){
+        pickupLocation = findViewById(R.id.pickupLocation);
+        destination = findViewById(R.id.dropoffLocation);
+        numberOfPassengers = findViewById(R.id.passengerCount);
+        departureTime = findViewById(R.id.departureTime);
+        carpoolPreferences = findViewById(R.id.carpoolPreferences);
+        findARideButton = findViewById(R.id.findARideButton);
+        backButton = findViewById(R.id.backButtonContainer);
     }
 
     private void openPlaceSearch() {
