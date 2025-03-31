@@ -29,6 +29,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -37,7 +38,7 @@ import java.util.TimeZone;
 public class BookRide extends AppCompatActivity {
 
     private static final int AUTOCOMPLETE_REQUEST_CODE = 1;
-    private EditText activeLocationField, passengerCount;
+    private EditText activeLocationField, passengerCount, carpoolPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +62,7 @@ public class BookRide extends AppCompatActivity {
         EditText dropoffLocation = findViewById(R.id.dropoffLocation); // Store reference
         passengerCount = findViewById(R.id.passengerCount);
         EditText departureTime = findViewById(R.id.departureTime);
-        EditText carpoolPreferences = findViewById(R.id.carpoolPreferences);
+        carpoolPreferences = findViewById(R.id.carpoolPreferences);
         Button findARideButton = findViewById(R.id.findARideButton);
         LinearLayout backButton = findViewById(R.id.backButtonContainer);
 
@@ -126,7 +127,46 @@ public class BookRide extends AppCompatActivity {
         departureTime.setFocusable(false);
         departureTime.setClickable(true);
         departureTime.setOnClickListener(v -> openTimePicker());
+
+        carpoolPreferences.setFocusable(false);
+        carpoolPreferences.setClickable(true);
+        carpoolPreferences.setOnClickListener(v -> openCarpoolPreferencesDialog());
+
     }
+
+    private void openCarpoolPreferencesDialog() {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+        builder.setTitle("Select Carpool Preferences");
+
+        // Predefined preferences
+        String[] preferencesArray = {"No pets", "Quiet ride", "Music on", "No smoking", "Wheelchair accessible", "AC preferred"};
+        boolean[] checkedItems = new boolean[preferencesArray.length]; // To track selected items
+        List<String> selectedPreferences = new ArrayList<>();
+
+        builder.setMultiChoiceItems(preferencesArray, checkedItems, (dialog, which, isChecked) -> {
+            if (isChecked) {
+                selectedPreferences.add(preferencesArray[which]);
+            } else {
+                selectedPreferences.remove(preferencesArray[which]);
+            }
+        });
+
+        // Set positive button to save selections
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            if (selectedPreferences.isEmpty()) {
+                carpoolPreferences.setText(""); // Clear if nothing is selected
+            } else {
+                carpoolPreferences.setText(String.join(", ", selectedPreferences)); // Display selected items
+            }
+        });
+
+        // Cancel button
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+
+        builder.show();
+    }
+
+
 
     private void openPlaceSearch() {
         List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG);
