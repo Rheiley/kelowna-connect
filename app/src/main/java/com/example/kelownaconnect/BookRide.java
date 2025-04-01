@@ -20,7 +20,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.RectangularBounds;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
@@ -169,14 +171,21 @@ public class BookRide extends AppCompatActivity {
     }
 
     private void openPlaceSearch() {
-        List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG);
+        // Get user's current location (hardcoded to Kelowna, BC)
+        LatLng southwest = new LatLng(49.860, -119.620);
+        LatLng northeast = new LatLng(49.940, -119.530);
+        RectangularBounds locationBias = RectangularBounds.newInstance(southwest, northeast);
 
-        // Open Places Autocomplete Intent
+        List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
+
         Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields)
+                .setTypesFilter(Arrays.asList("address")) // Restrict to addresses only
+                .setLocationBias(locationBias) // Bias results towards a specific area
                 .build(BookRide.this);
-        startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE);
 
+        startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE);
     }
+
 
     private void openPassengerPicker() {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
