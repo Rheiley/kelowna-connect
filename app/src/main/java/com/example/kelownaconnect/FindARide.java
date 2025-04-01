@@ -41,7 +41,6 @@ public class FindARide extends AppCompatActivity {
 
         ride = getIntent().getParcelableExtra("ride");
 
-        // Initialize RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         drivers = new ArrayList<>();
         filteredDrivers = new ArrayList<>(drivers);
@@ -51,26 +50,32 @@ public class FindARide extends AppCompatActivity {
         recyclerView.setAdapter(driverAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Initialize filter checkboxes
-        filterRating = findViewById(R.id.filterRating);
-        filterPrice = findViewById(R.id.filterPrice);
-        filterETA = findViewById(R.id.filterETA);
-
-        // Add mock driver data
-        drivers.add(new Driver("John Doe", 4.5, 20.0, "15 mins", "Sedan", "Friendly driver", "Available", 3, 10, "English"));
-        drivers.add(new Driver("Jane Smith", 4.8, 25.0, "10 mins", "SUV", "Experienced driver", "Available", 2, 20, "English, Spanish"));
-        drivers.add(new Driver("Mark Lee", 4.2, 18.0, "20 mins", "Sedan", "Nice guy", "Available", 1, 5, "English, Mandarin"));
-
-        driverAdapter.updateList(drivers);
-
-        // Set filter listeners
-        filterRating.setOnCheckedChangeListener((buttonView, isChecked) -> applyFilters());
-        filterPrice.setOnCheckedChangeListener((buttonView, isChecked) -> applyFilters());
-        filterETA.setOnCheckedChangeListener((buttonView, isChecked) -> applyFilters());
+        initializeFilterCheckboxes();
+        initializeMockData();
+        setFilterListeners();
 
         // Back button
         LinearLayout backButtonContainer = findViewById(R.id.backButtonContainer);
         backButtonContainer.setOnClickListener(v -> finish());
+    }
+
+    private void setFilterListeners(){
+        filterRating.setOnCheckedChangeListener((buttonView, isChecked) -> applyFilters());
+        filterPrice.setOnCheckedChangeListener((buttonView, isChecked) -> applyFilters());
+        filterETA.setOnCheckedChangeListener((buttonView, isChecked) -> applyFilters());
+    }
+
+    private void initializeMockData(){
+        drivers.add(new Driver("John Doe", 4.5, 20.0, "15 mins", "Sedan", "Friendly driver", "Available", 3, 10, "English"));
+        drivers.add(new Driver("Jane Smith", 4.8, 25.0, "10 mins", "SUV", "Experienced driver", "Available", 2, 20, "English, Spanish"));
+        drivers.add(new Driver("Mark Lee", 4.2, 18.0, "20 mins", "Sedan", "Nice guy", "Available", 1, 5, "English, Mandarin"));
+        driverAdapter.updateList(drivers);
+    }
+
+    private void initializeFilterCheckboxes(){
+        filterRating = findViewById(R.id.filterRating);
+        filterPrice = findViewById(R.id.filterPrice);
+        filterETA = findViewById(R.id.filterETA);
     }
 
     private void applyFilters() {
