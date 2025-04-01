@@ -13,7 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class RideBookingConfirmation extends AppCompatActivity {
 
-    private TextView pickupLocation, driverDetails, destination, eta, vehicleDetails, driverRating;
+    private TextView labelDriver, valueDriver, labelVehicle, valueVehicle, labelRating, valueRating,
+            labelPickupLocation, valuePickupLocation, labelDestination, valueDestination, labelEta, valueEta;
     private Button homeButton;
     private Driver driver;
     private Ride ride;
@@ -53,14 +54,25 @@ public class RideBookingConfirmation extends AppCompatActivity {
     }
 
     @SuppressLint("SetTextI18n")
-    private void setConfirmationDetails(){
+    private void setConfirmationDetails() {
         assert driver != null;
-        driverDetails.setText("Driver: " + driver.getName());
-        vehicleDetails.setText("Vehicle: " + driver.getVehicle());
-        driverRating.setText("Rating: " + driver.getRating() + "/5.0");
-//        pickupLocation.setText("Pickup Location: " + ride.getPickupLocation());
-//        destination.setText("Destination: " + ride.getDestination());
-        eta.setText("Arriving in: " + driver.getEta());
+        labelDriver.setText("Driver: ");
+        valueDriver.setText(driver.getName());
+
+        labelVehicle.setText("Vehicle: ");
+        valueVehicle.setText(driver.getVehicle());
+
+        labelRating.setText("Rating: ");
+        valueRating.setText(driver.getRating() + "/5.0");
+
+        labelPickupLocation.setText("Pickup Location: ");
+        valuePickupLocation.setText(ride.getPickupLocation());
+
+        labelDestination.setText("Destination: ");
+        valueDestination.setText(ride.getDestination());
+
+        labelEta.setText("Arriving in: ");
+        valueEta.setText(driver.getEta());
     }
 
     private void getDriverAndRideDetailsFromPreviousActivity(){
@@ -70,13 +82,24 @@ public class RideBookingConfirmation extends AppCompatActivity {
     }
 
     private void initializeViews(){
-        driverDetails = findViewById(R.id.driverDetails);
-        pickupLocation = findViewById(R.id.pickupLocation);
-        destination = findViewById(R.id.destination);
-        eta = findViewById(R.id.eta);
+        labelDriver = findViewById(R.id.labelDriver);
+        valueDriver = findViewById(R.id.valueDriver);
+
+        labelVehicle = findViewById(R.id.labelVehicle);
+        valueVehicle = findViewById(R.id.valueVehicle);
+
+        labelRating = findViewById(R.id.labelRating);
+        valueRating = findViewById(R.id.valueRating);
+
+        labelPickupLocation = findViewById(R.id.labelPickupLocation);
+        valuePickupLocation = findViewById(R.id.valuePickupLocation);
+
+        labelDestination = findViewById(R.id.labelDestination);
+        valueDestination = findViewById(R.id.valueDestination);
+
+        labelEta = findViewById(R.id.labelEta);
+        valueEta = findViewById(R.id.valueEta);
+
         homeButton = findViewById(R.id.homeButton);
-        pickupLocation = findViewById(R.id.pickupLocation);
-        vehicleDetails = findViewById(R.id.vehicleDetails);
-        driverRating = findViewById(R.id.driverRating);
     }
 }
