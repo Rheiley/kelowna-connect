@@ -35,6 +35,12 @@ public class RideBookingConfirmation extends AppCompatActivity {
         setupOnClickListeners();
     }
 
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onBackPressed(){
+        // Do nothing because the user should not be able to go back to the previous page from here
+    }
+
     private void setupOnClickListeners(){
         homeButton.setOnClickListener(v -> {
             Intent homeIntent = new Intent(RideBookingConfirmation.this, MainActivity.class);
