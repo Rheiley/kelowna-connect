@@ -134,24 +134,50 @@ public class BookRide extends AppCompatActivity {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
         builder.setTitle("Select Carpool Preferences");
 
-        // Predefined preferences
-        String[] preferencesArray = {"No pets", "Quiet ride", "Music on", "No smoking", "Wheelchair accessible", "AC preferred"};
-        boolean[] checkedItems = new boolean[preferencesArray.length]; // To track selected items
+        String[] preferencesArray = {"No pets", "Quiet ride", "Music on", "No smoking", "Wheelchair accessible", "AC preferred", "Other"};
+        boolean[] checkedItems = new boolean[preferencesArray.length];
         List<String> selectedPreferences = new ArrayList<>();
+
+        // Create a layout for the custom input field
+        LinearLayout layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setPadding(50, 20, 50, 20);
+
+        final EditText customPreferenceInput = new EditText(this);
+        customPreferenceInput.setHint("Enter custom preference");
+        customPreferenceInput.setVisibility(View.GONE); // Initially hidden
+
+        layout.addView(customPreferenceInput);
 
         builder.setMultiChoiceItems(preferencesArray, checkedItems, (dialog, which, isChecked) -> {
             if (isChecked) {
-                selectedPreferences.add(preferencesArray[which]);
+                if (preferencesArray[which].equals("Other")) {
+                    customPreferenceInput.setVisibility(View.VISIBLE);
+                } else {
+                    selectedPreferences.add(preferencesArray[which]);
+                }
             } else {
-                selectedPreferences.remove(preferencesArray[which]);
+                if (preferencesArray[which].equals("Other")) {
+                    customPreferenceInput.setVisibility(View.GONE);
+                    customPreferenceInput.setText(""); // Clear input if unchecked
+                } else {
+                    selectedPreferences.remove(preferencesArray[which]);
+                }
             }
         });
 
+        builder.setView(layout);
+
         builder.setPositiveButton("OK", (dialog, which) -> {
+            String customPreference = customPreferenceInput.getText().toString().trim();
+            if (!customPreference.isEmpty()) {
+                selectedPreferences.add(customPreference);
+            }
+
             if (selectedPreferences.isEmpty()) {
-                carpoolPreferences.setText(""); // Clear if nothing is selected
+                carpoolPreferences.setText("");
             } else {
-                carpoolPreferences.setText(String.join(", ", selectedPreferences)); // Display selected items
+                carpoolPreferences.setText(String.join(", ", selectedPreferences));
             }
         });
 
@@ -159,6 +185,7 @@ public class BookRide extends AppCompatActivity {
 
         builder.show();
     }
+
 
     private void initializeViews(){
         pickupLocation = findViewById(R.id.pickupLocation);
