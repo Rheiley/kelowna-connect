@@ -13,8 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class RideBookingConfirmation extends AppCompatActivity {
 
-    private TextView pickupLocation, confirmationMessage, driverDetails, destination, eta, vehicleDetails, driverRating;
-    private Button homeButton, cancelRideButton;
+    private TextView pickupLocation, driverDetails, destination, eta, vehicleDetails, driverRating;
+    private Button homeButton;
     private Driver driver;
     private Ride ride;
 
@@ -64,13 +64,11 @@ public class RideBookingConfirmation extends AppCompatActivity {
     }
 
     private void initializeViews(){
-        confirmationMessage = findViewById(R.id.confirmationMessage);
         driverDetails = findViewById(R.id.driverDetails);
         pickupLocation = findViewById(R.id.pickupLocation);
         destination = findViewById(R.id.destination);
         eta = findViewById(R.id.eta);
         homeButton = findViewById(R.id.homeButton);
-        cancelRideButton = findViewById(R.id.cancelRideButton);
         pickupLocation = findViewById(R.id.pickupLocation);
         vehicleDetails = findViewById(R.id.vehicleDetails);
         driverRating = findViewById(R.id.driverRating);
