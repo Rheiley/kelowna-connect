@@ -18,14 +18,43 @@ public class DriverDetails extends AppCompatActivity {
     private Button viewReviewsButton, confirmBookingButton;
     private LinearLayout backButton;
     private Ride ride;
+    private Driver selectedDriver;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_details);
+        initializeViews();
+        getDriverAndRideFromIntent();
+        setDriverDetails();
+        setupOnClickListeners();
+    }
 
-        // Initialize views
+    private void setupOnClickListeners(){
+        viewReviewsButton.setOnClickListener(v -> openReviewsPage(selectedDriver));
+        confirmBookingButton.setOnClickListener(v -> confirmBooking(selectedDriver));
+        backButton.setOnClickListener(v -> finish());
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void setDriverDetails(){
+        driverName.setText(selectedDriver.getName());
+        driverStatus.setText(selectedDriver.getStatus());
+        driverSeats.setText(String.valueOf(selectedDriver.getSeatsAvailable()));
+        driverRating.setText(selectedDriver.getRating() + "/5.0");
+        driverVehicle.setText(selectedDriver.getVehicle());
+        driverCompletedRides.setText(String.valueOf(selectedDriver.getCompletedRides()));
+        driverLanguages.setText(selectedDriver.getLanguages());
+    }
+
+    private void getDriverAndRideFromIntent(){
+        Intent intent = getIntent();
+        selectedDriver = (Driver) intent.getSerializableExtra("selectedDriver");
+        ride = intent.getParcelableExtra("ride");
+    }
+
+    private void initializeViews(){
         driverName = findViewById(R.id.driverName);
         driverStatus = findViewById(R.id.driverStatus);
         driverSeats = findViewById(R.id.driverSeats);
@@ -36,27 +65,6 @@ public class DriverDetails extends AppCompatActivity {
         viewReviewsButton = findViewById(R.id.viewReviewsButton);
         confirmBookingButton = findViewById(R.id.confirmBookingButton);
         backButton = findViewById(R.id.backButtonContainer);
-
-        // Get the driver data passed through the Intent
-        Intent intent = getIntent();
-        Driver selectedDriver = (Driver) intent.getSerializableExtra("selectedDriver");
-        ride = intent.getParcelableExtra("ride");
-
-        // Set driver details on the views
-        assert selectedDriver != null;
-        driverName.setText(selectedDriver.getName());
-        driverStatus.setText(selectedDriver.getStatus());
-        driverSeats.setText(String.valueOf(selectedDriver.getSeatsAvailable()));
-        driverRating.setText(selectedDriver.getRating() + "/5.0");
-        driverVehicle.setText(selectedDriver.getVehicle());
-        driverCompletedRides.setText(String.valueOf(selectedDriver.getCompletedRides()));
-        driverLanguages.setText(selectedDriver.getLanguages());
-
-
-        // Set onClickListeners for the buttons
-        viewReviewsButton.setOnClickListener(v -> openReviewsPage(selectedDriver));
-        confirmBookingButton.setOnClickListener(v -> confirmBooking(selectedDriver));
-        backButton.setOnClickListener(v -> finish());
     }
 
     private void openReviewsPage(Driver driver) {
