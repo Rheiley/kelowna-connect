@@ -34,29 +34,33 @@ public class MainActivity extends AppCompatActivity {
 
         initializeViews();
         recentRidesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        initializeRecentRides();
+        setupOnClickListeners();
 
-        // Create mock data for recent rides
+    }
+
+    private void setupOnClickListeners(){
+        bookRideButton.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, BookRide.class));
+        });
+    }
+
+    private void initializeRecentRides(){
         if (recentRides.isEmpty()) {
             recentRides.add(new Ride("UBCO", "Lake Country", "Completed", "12:30 PM"));
             recentRides.add(new Ride("Lake Country", "Vernon", "Completed", "2:00 PM"));
             recentRides.add(new Ride("Innovation Drive", "UBCO", "Completed", "10:00 AM"));
         }
-
-        // Set the adapter
-        adapter = new RecentRidesAdapter(recentRides);
-        recentRidesRecyclerView.setAdapter(adapter);
-
+        setAdapter();
         Ride newRide = getIntent().getParcelableExtra("newRide");
         if (newRide != null) {
             addNewRide(newRide);
         }
+    }
 
-        bookRideButton.setOnClickListener(v -> {
-            // Handle book ride button click
-            // Start BookRide activity
-            startActivity(new Intent(MainActivity.this, BookRide.class));
-        });
-
+    private void setAdapter(){
+        adapter = new RecentRidesAdapter(recentRides);
+        recentRidesRecyclerView.setAdapter(adapter);
     }
 
     private void initializeViews(){
