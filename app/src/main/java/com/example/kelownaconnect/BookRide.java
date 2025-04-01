@@ -179,6 +179,7 @@ public class BookRide extends AppCompatActivity {
         List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
 
         Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields)
+                .setCountries(Arrays.asList("CA"))
                 .setLocationBias(locationBias)
                 .build(BookRide.this);
 
