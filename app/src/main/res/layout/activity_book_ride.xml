@@ -42,13 +42,14 @@
         android:id="@+id/pickupLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter pickup location"
-        app:layout_constraintTop_toBottomOf="@id/pickupLocationLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter pickup location"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pickupLocationLabel" />
 
     <TextView
         android:id="@+id/dropoffLocationLabel"
@@ -67,13 +68,14 @@
         android:id="@+id/dropoffLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter dropoff location"
-        app:layout_constraintTop_toBottomOf="@id/dropoffLocationLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter dropoff location"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dropoffLocationLabel" />
 
     <TextView
         android:id="@+id/passengerCountLabel"
@@ -92,14 +94,15 @@
         android:id="@+id/passengerCount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="Enter number of passengers"
-        app:layout_constraintTop_toBottomOf="@id/passengerCountLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter number of passengers"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passengerCountLabel" />
 
     <TextView
         android:id="@+id/departureTimeLabel"
