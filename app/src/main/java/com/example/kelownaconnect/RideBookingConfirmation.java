@@ -7,19 +7,63 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public class RideBookingConfirmation extends AppCompatActivity {
 
     private TextView pickupLocation, confirmationMessage, driverDetails, destination, eta, vehicleDetails, driverRating;
     private Button homeButton, cancelRideButton;
+    private Driver driver;
+    private Ride ride;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ride_booking_confirmation);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
-        // Initialize views
+        initializeViews();
+        getDriverAndRideDetailsFromPreviousActivity();
+        setConfirmationDetails();
+        setupOnClickListeners();
+    }
+
+    private void setupOnClickListeners(){
+        homeButton.setOnClickListener(v -> {
+            Intent homeIntent = new Intent(RideBookingConfirmation.this, MainActivity.class);
+            assert ride != null;
+            ride.setStatus("Upcoming");
+            homeIntent.putExtra("newRide", ride);
+            startActivity(homeIntent);
+            finish();
+        });
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void setConfirmationDetails(){
+        assert driver != null;
+        driverDetails.setText("Driver: " + driver.getName());
+        vehicleDetails.setText("Vehicle: " + driver.getVehicle());
+        driverRating.setText("Rating: " + driver.getRating() + "/5.0");
+//        pickupLocation.setText("Pickup Location: " + ride.getPickupLocation());
+//        destination.setText("Destination: " + ride.getDestination());
+        eta.setText("Arriving in: " + driver.getEta());
+    }
+
+    private void getDriverAndRideDetailsFromPreviousActivity(){
+        Intent intent = getIntent();
+        driver = (Driver) intent.getSerializableExtra("selectedDriver");
+        ride = intent.getParcelableExtra("ride");
+    }
+
+    private void initializeViews(){
         confirmationMessage = findViewById(R.id.confirmationMessage);
         driverDetails = findViewById(R.id.driverDetails);
         pickupLocation = findViewById(R.id.pickupLocation);
@@ -30,41 +74,5 @@ public class RideBookingConfirmation extends AppCompatActivity {
         pickupLocation = findViewById(R.id.pickupLocation);
         vehicleDetails = findViewById(R.id.vehicleDetails);
         driverRating = findViewById(R.id.driverRating);
-
-        // Get the driver and ride details passed from the previous activity
-        Intent intent = getIntent();
-        Driver driver = (Driver) intent.getSerializableExtra("selectedDriver");
-        Ride ride = intent.getParcelableExtra("ride");
-
-        // Set the confirmation message
-        confirmationMessage.setText("Your ride has been confirmed!");
-
-        // Set the driver details
-        if (driver != null) {
-            driverDetails.setText("Driver: " + driver.getName());
-            vehicleDetails.setText("Vehicle: " + driver.getVehicle());
-            driverRating.setText("Rating: " + driver.getRating() + "/5.0");
-        }
-
-//        pickupLocation.setText("Pickup Location: " + ride.getPickupLocation());
-//        destination.setText("Destination: " + ride.getDestination());
-        assert driver != null;
-        eta.setText("Arriving in: " + driver.getEta());
-
-        // Set onClickListener for Home button
-        homeButton.setOnClickListener(v -> {
-            // Redirect to the Home activity (or main screen)
-            Intent homeIntent = new Intent(RideBookingConfirmation.this, MainActivity.class);
-            assert ride != null;
-            ride.setStatus("Upcoming");
-            homeIntent.putExtra("newRide", ride);
-            startActivity(homeIntent);
-            finish();  // Finish the current activity
-        });
-
-        // Set onClickListener for Cancel Ride button (frontend only)
-        cancelRideButton.setOnClickListener(v -> {
-            // Handle cancel action here (not implemented yet)
-        });
     }
 }
