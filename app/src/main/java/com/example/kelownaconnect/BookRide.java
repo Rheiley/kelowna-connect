@@ -179,8 +179,7 @@ public class BookRide extends AppCompatActivity {
         List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
 
         Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields)
-                .setTypesFilter(Arrays.asList("address")) // Restrict to addresses only
-                .setLocationBias(locationBias) // Bias results towards a specific area
+                .setLocationBias(locationBias)
                 .build(BookRide.this);
 
         startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE);
