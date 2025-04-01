@@ -19,7 +19,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private static List<Ride> recentRides = new ArrayList<>();
     private RecentRidesAdapter adapter;
-
+    private Button bookRideButton, offerRideButton, rewardsButton, withdrawButton, activeRidesButton, settingsButton;
+    private RecyclerView recentRidesRecyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,15 +32,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Views
-        Button bookRideButton = findViewById(R.id.bookRideButton);
-        Button offerRideButton = findViewById(R.id.offerRideButton);
-        Button rewardsButton = findViewById(R.id.rewardsButton);
-        Button withdrawButton = findViewById(R.id.withdrawButton);
-        Button activeRidesButton = findViewById(R.id.activeRidesButton);
-        Button settingsButton = findViewById(R.id.settingsButton);
-        RecyclerView recyclerView = findViewById(R.id.recentRidesRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        initializeViews();
+        recentRidesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Create mock data for recent rides
         if (recentRides.isEmpty()) {
@@ -50,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set the adapter
         adapter = new RecentRidesAdapter(recentRides);
-        recyclerView.setAdapter(adapter);
+        recentRidesRecyclerView.setAdapter(adapter);
 
         Ride newRide = getIntent().getParcelableExtra("newRide");
         if (newRide != null) {
@@ -64,6 +58,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private void initializeViews(){
+        bookRideButton = findViewById(R.id.bookRideButton);
+        offerRideButton = findViewById(R.id.offerRideButton);
+        rewardsButton = findViewById(R.id.rewardsButton);
+        withdrawButton = findViewById(R.id.withdrawButton);
+        activeRidesButton = findViewById(R.id.activeRidesButton);
+        settingsButton = findViewById(R.id.settingsButton);
+        recentRidesRecyclerView = findViewById(R.id.recentRidesRecyclerView);
+    }
+
     @SuppressLint("NotifyDataSetChanged")
     private void addNewRide(Ride ride) {
         recentRides.add(0, ride); // Add new ride at the top
