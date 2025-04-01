@@ -55,9 +55,29 @@ public class BookRide extends AppCompatActivity {
 
         initializePlacesAPI();
         initializeViews();
+        setupOnClickListeners();
+        setFocusableElements();
+        setClickableElements();
+    }
 
+    private void setClickableElements(){
+        pickupLocation.setClickable(true);
+        destination.setClickable(true);
+        numberOfPassengers.setClickable(true);
+        departureTime.setClickable(true);
+        carpoolPreferences.setClickable(true);
+    }
+
+    private void setFocusableElements(){
+        pickupLocation.setFocusable(false);
+        destination.setFocusable(false);
+        numberOfPassengers.setFocusable(false);
+        departureTime.setFocusable(false);
+        carpoolPreferences.setFocusable(false);
+    }
+
+    private void setupOnClickListeners(){
         backButton.setOnClickListener(v -> finish());
-
         findARideButton.setOnClickListener(v -> {
             // Get input values
             String pickupLocation = this.pickupLocation.getText().toString().trim();
@@ -89,35 +109,16 @@ public class BookRide extends AppCompatActivity {
             intent.putExtra("ride", ride);
             startActivity(intent);
         });
-
-        // Open Autocomplete search when clicking destination
-        destination.setFocusable(false);
-        destination.setClickable(true);
         destination.setOnClickListener(v -> {
             activeLocationField = destination;
             openPlaceSearch();
         });
-
-        // Open Autocomplete search when clicking pickupLocation
-        pickupLocation.setFocusable(false);
-        pickupLocation.setClickable(true);
         pickupLocation.setOnClickListener(v -> {
             activeLocationField = pickupLocation;
             openPlaceSearch();
         });
-
-        // Open menu for selecting number of passengers
-        numberOfPassengers.setFocusable(false);
-        numberOfPassengers.setClickable(true);
         numberOfPassengers.setOnClickListener(v -> openPassengerPicker());
-
-        // Disable text input and enable click behavior for departure time
-        departureTime.setFocusable(false);
-        departureTime.setClickable(true);
         departureTime.setOnClickListener(v -> openTimePicker());
-
-        carpoolPreferences.setFocusable(false);
-        carpoolPreferences.setClickable(true);
         carpoolPreferences.setOnClickListener(v -> openCarpoolPreferencesDialog());
     }
 
@@ -144,7 +145,6 @@ public class BookRide extends AppCompatActivity {
             }
         });
 
-        // Set positive button to save selections
         builder.setPositiveButton("OK", (dialog, which) -> {
             if (selectedPreferences.isEmpty()) {
                 carpoolPreferences.setText(""); // Clear if nothing is selected
@@ -153,7 +153,6 @@ public class BookRide extends AppCompatActivity {
             }
         });
 
-        // Cancel button
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
 
         builder.show();
