@@ -1,5 +1,6 @@
 package com.example.kelownaconnect;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ public class RecentRidesAdapter extends RecyclerView.Adapter<RecentRidesAdapter.
         return new RideViewHolder(itemView);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(RideViewHolder holder, int position) {
         Ride ride = rideList.get(position);
