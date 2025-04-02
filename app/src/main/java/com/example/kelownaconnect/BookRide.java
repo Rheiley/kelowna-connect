@@ -43,6 +43,7 @@ public class BookRide extends AppCompatActivity {
     private EditText pickupLocation, destination, numberOfPassengers, departureTime, carpoolPreferences, activeLocationField;
     Button findARideButton;
     LinearLayout backButton;
+    private final List<String> selectedPreferencesList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,58 +135,30 @@ public class BookRide extends AppCompatActivity {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
         builder.setTitle("Select Carpool Preferences");
 
-        String[] preferencesArray = {"No pets", "Quiet ride", "Music on", "No smoking", "Wheelchair accessible", "AC preferred", "Other"};
+        String[] preferencesArray = {"No pets", "Quiet ride", "Music on", "No smoking", "Wheelchair accessible", "AC preferred"};
         boolean[] checkedItems = new boolean[preferencesArray.length];
-        List<String> selectedPreferences = new ArrayList<>();
 
-        // Create a layout for the custom input field
-        LinearLayout layout = new LinearLayout(this);
-        layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setPadding(50, 20, 50, 20);
-
-        final EditText customPreferenceInput = new EditText(this);
-        customPreferenceInput.setHint("Enter custom preference");
-        customPreferenceInput.setVisibility(View.GONE); // Initially hidden
-
-        layout.addView(customPreferenceInput);
+        // Restore previous selections
+        for (int i = 0; i < preferencesArray.length; i++) {
+            checkedItems[i] = selectedPreferencesList.contains(preferencesArray[i]);
+        }
 
         builder.setMultiChoiceItems(preferencesArray, checkedItems, (dialog, which, isChecked) -> {
             if (isChecked) {
-                if (preferencesArray[which].equals("Other")) {
-                    customPreferenceInput.setVisibility(View.VISIBLE);
-                } else {
-                    selectedPreferences.add(preferencesArray[which]);
-                }
+                selectedPreferencesList.add(preferencesArray[which]);
             } else {
-                if (preferencesArray[which].equals("Other")) {
-                    customPreferenceInput.setVisibility(View.GONE);
-                    customPreferenceInput.setText(""); // Clear input if unchecked
-                } else {
-                    selectedPreferences.remove(preferencesArray[which]);
-                }
+                selectedPreferencesList.remove(preferencesArray[which]);
             }
         });
 
-        builder.setView(layout);
-
         builder.setPositiveButton("OK", (dialog, which) -> {
-            String customPreference = customPreferenceInput.getText().toString().trim();
-            if (!customPreference.isEmpty()) {
-                selectedPreferences.add(customPreference);
-            }
-
-            if (selectedPreferences.isEmpty()) {
-                carpoolPreferences.setText("");
-            } else {
-                carpoolPreferences.setText(String.join(", ", selectedPreferences));
-            }
+            carpoolPreferences.setText(String.join(", ", selectedPreferencesList));
         });
 
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
 
         builder.show();
     }
-
 
     private void initializeViews(){
         pickupLocation = findViewById(R.id.pickupLocation);
