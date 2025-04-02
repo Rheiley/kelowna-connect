@@ -66,9 +66,9 @@ public class FindARide extends AppCompatActivity {
     }
 
     private void initializeMockData(){
-        drivers.add(new Driver("John Doe", 4.5, 20.0, "15 mins", "Sedan", "Friendly driver", "Available", 3, 10, "English"));
-        drivers.add(new Driver("Jane Smith", 4.8, 25.0, "10 mins", "SUV", "Experienced driver", "Available", 2, 20, "English, Spanish"));
-        drivers.add(new Driver("Mark Lee", 4.2, 18.0, "20 mins", "Sedan", "Nice guy", "Available", 1, 5, "English, Mandarin"));
+        drivers.add(new Driver("John Doe", 4.5, 20.0, "15 mins", "Toyota Corolla", "Friendly driver", "Available", 3, 10, "English"));
+        drivers.add(new Driver("Jane Smith", 4.8, 25.0, "10 mins", "Ford Mustang", "Experienced driver", "Available", 2, 20, "English, Spanish"));
+        drivers.add(new Driver("Mark Lee", 4.2, 18.0, "20 mins", "Volkswagen Beetle", "Nice guy", "Available", 1, 5, "English, Mandarin"));
         driverAdapter.updateList(drivers);
     }
 
