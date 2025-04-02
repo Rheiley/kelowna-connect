@@ -58,7 +58,7 @@ public class AvailableRewards extends AppCompatActivity {
     }
     public void checkPointsHelper(int requiredAmount, String type, int redeemAmount) {
         if (checkPoints(requiredAmount)) {
-            redeem(type, redeemAmount);
+            redeem(type, redeemAmount, requiredAmount);
         }
         else {
             Toast.makeText(this, "Not enough points", Toast.LENGTH_SHORT).show();
@@ -69,11 +69,13 @@ public class AvailableRewards extends AppCompatActivity {
         return pointsAmount >= requiredAmount;
     }
     // type is either RC (ride credit) or EG (e-gift card) and amount is amount of RC or EG being rewarded to user
-    public void redeem(String type, int amount) {
+    public void redeem(String type, int rewardAmount, int requiredAmount) {
         Intent rewardDetailsActivity = new Intent(this, RewardDetails.class);
         Bundle bundle = new Bundle();
         bundle.putString("type", type);
-        bundle.putInt("creditAmount", amount);
+        bundle.putInt("rewardAmount", rewardAmount);
+        bundle.putInt("requiredAmount", requiredAmount);
+        bundle.putInt("pointsAmount", pointsAmount);
         rewardDetailsActivity.putExtras(bundle);
         startActivity(rewardDetailsActivity);
     }

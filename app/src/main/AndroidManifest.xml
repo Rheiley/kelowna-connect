@@ -17,6 +17,9 @@
         android:theme="@style/Theme.KelownaConnect"
         tools:targetApi="31">
         <activity
+            android:name=".RewardConfirmation"
+            android:exported="false" />
+        <activity
             android:name=".RewardDetails"
             android:exported="false" />
         <activity
