@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         bookRideButton.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, BookRide.class));
         });
+        rewardsButton.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, Rewards.class));
+        });
     }
 
     private void initializeRecentRides(){
