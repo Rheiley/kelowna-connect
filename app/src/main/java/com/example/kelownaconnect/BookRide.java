@@ -232,15 +232,16 @@ public class BookRide extends AppCompatActivity {
     }
 
     private void openTimePicker() {
-        // Get the current time
+        // Get the current time and add 5 minutes
         Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
+        calendar.add(Calendar.MINUTE, 5); // Minimum valid time
+        int minHour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minMinute = calendar.get(Calendar.MINUTE);
 
         // Create the MaterialTimePicker
         MaterialTimePicker materialTimePicker = new MaterialTimePicker.Builder()
-                .setHour(hour)
-                .setMinute(minute)
+                .setHour(minHour)
+                .setMinute(minMinute)
                 .setTimeFormat(TimeFormat.CLOCK_24H)
                 .setInputMode(MaterialTimePicker.INPUT_MODE_KEYBOARD)
                 .build();
@@ -250,19 +251,24 @@ public class BookRide extends AppCompatActivity {
             int selectedHour = materialTimePicker.getHour();
             int selectedMinute = materialTimePicker.getMinute();
 
-            // Get the current timezone
-            TimeZone timeZone = TimeZone.getDefault();
-            String timeZoneDisplay = timeZone.getDisplayName(false, TimeZone.SHORT);
+            // Check if selected time is at least 5 minutes in the future
+            Calendar selectedTime = Calendar.getInstance();
+            selectedTime.set(Calendar.HOUR_OF_DAY, selectedHour);
+            selectedTime.set(Calendar.MINUTE, selectedMinute);
 
-            // Format the selected time and append the timezone
-            @SuppressLint("DefaultLocale") String formattedTime = String.format("%02d:%02d %s", selectedHour, selectedMinute, timeZoneDisplay);
-
-            // Set the departure time with the timezone
-            EditText departureTime = findViewById(R.id.departureTime);
-            departureTime.setText(formattedTime);
+            if (selectedTime.before(calendar)) {
+                Toast.makeText(this, "Departure time must be at least 5 minutes from now.", Toast.LENGTH_SHORT).show();
+            } else {
+                // Format the selected time and set it in the EditText
+                TimeZone timeZone = TimeZone.getDefault();
+                String timeZoneDisplay = timeZone.getDisplayName(false, TimeZone.SHORT);
+                @SuppressLint("DefaultLocale") String formattedTime = String.format("%02d:%02d %s", selectedHour, selectedMinute, timeZoneDisplay);
+                departureTime.setText(formattedTime);
+            }
         });
 
         // Show the time picker
         materialTimePicker.show(getSupportFragmentManager(), "TIME_PICKER");
     }
+
 }
