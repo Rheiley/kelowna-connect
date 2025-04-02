@@ -220,11 +220,12 @@
     </androidx.cardview.widget.CardView>
 
     <!-- Buttons -->
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/homeButton"
         android:layout_width="280dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="188dp"
+        android:layout_marginBottom="168dp"
         android:backgroundTint="#007BFF"
         android:text="Home"
         android:textSize="20sp"
