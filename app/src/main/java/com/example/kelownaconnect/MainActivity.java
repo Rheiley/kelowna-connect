@@ -9,6 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +35,18 @@ public class MainActivity extends AppCompatActivity {
         Button withdrawButton = findViewById(R.id.withdrawButton);
         Button activeRidesButton = findViewById(R.id.activeRidesButton);
         Button settingsButton = findViewById(R.id.settingsButton);
+        RecyclerView recyclerView = findViewById(R.id.recentRidesRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Create mock data for recent rides
+        List<Ride> mockRides = new ArrayList<>();
+        mockRides.add(new Ride("Vancouver", "Upcoming", "12:30 PM"));
+        mockRides.add(new Ride("Kelowna", "Completed", "2:00 PM"));
+        mockRides.add(new Ride("Surrey", "Completed", "10:00 AM"));
+
+        // Set the adapter
+        RecentRidesAdapter adapter = new RecentRidesAdapter(mockRides);
+        recyclerView.setAdapter(adapter);
 
         bookRideButton.setOnClickListener(v -> {
             // Handle book ride button click

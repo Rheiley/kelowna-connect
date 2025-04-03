@@ -42,13 +42,14 @@
         android:id="@+id/pickupLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter pickup location"
-        app:layout_constraintTop_toBottomOf="@id/pickupLocationLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter pickup location"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pickupLocationLabel" />
 
     <TextView
         android:id="@+id/dropoffLocationLabel"
@@ -67,13 +68,14 @@
         android:id="@+id/dropoffLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter dropoff location"
-        app:layout_constraintTop_toBottomOf="@id/dropoffLocationLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter dropoff location"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dropoffLocationLabel" />
 
     <TextView
         android:id="@+id/passengerCountLabel"
@@ -92,14 +94,15 @@
         android:id="@+id/passengerCount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="Enter number of passengers"
-        app:layout_constraintTop_toBottomOf="@id/passengerCountLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter number of passengers"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passengerCountLabel" />
 
     <TextView
         android:id="@+id/departureTimeLabel"
@@ -143,7 +146,7 @@
         android:id="@+id/carpoolPreferences"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter carpool preferences"
+        android:hint="Enter carpool preferences (optional)"
         app:layout_constraintTop_toBottomOf="@id/carpoolPreferencesLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -151,15 +154,34 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"/>
 
-    <Button
-        android:id="@+id/bookRideButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Book Ride"
-        app:layout_constraintTop_toBottomOf="@id/carpoolPreferences"
-        app:layout_constraintStart_toStartOf="parent"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/findARideButton"
+        android:layout_width="280dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="#007BFF"
+        android:text="Find a Ride"
+        android:textSize="20sp"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/baseline_directions_car_24"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancelButton"
+        android:layout_width="280dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#007BFF"
+        android:text="Cancel"
+        android:textSize="20sp"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/baseline_cancel_24"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
