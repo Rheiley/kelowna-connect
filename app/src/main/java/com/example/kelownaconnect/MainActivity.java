@@ -1,5 +1,6 @@
 package com.example.kelownaconnect;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,9 +10,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static List<Ride> recentRides = new ArrayList<>();
+    private RecentRidesAdapter adapter;
+    private Button bookRideButton, offerRideButton, rewardsButton, withdrawButton, activeRidesButton, settingsButton;
+    private RecyclerView recentRidesRecyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,19 +32,53 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Views
-        Button bookRideButton = findViewById(R.id.bookRideButton);
-        Button offerRideButton = findViewById(R.id.offerRideButton);
-        Button rewardsButton = findViewById(R.id.rewardsButton);
-        Button withdrawButton = findViewById(R.id.withdrawButton);
-        Button activeRidesButton = findViewById(R.id.activeRidesButton);
-        Button settingsButton = findViewById(R.id.settingsButton);
+        initializeViews();
+        recentRidesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        initializeRecentRides();
+        setupOnClickListeners();
 
+    }
+
+    private void setupOnClickListeners(){
         bookRideButton.setOnClickListener(v -> {
-            // Handle book ride button click
-            // Start BookRide activity
             startActivity(new Intent(MainActivity.this, BookRide.class));
         });
+        rewardsButton.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, Rewards.class));
+        });
+    }
 
+    private void initializeRecentRides(){
+        if (recentRides.isEmpty()) {
+            recentRides.add(new Ride("UBCO", "Lake Country", "Completed", "12:30 PM"));
+            recentRides.add(new Ride("Lake Country", "Vernon", "Completed", "2:00 PM"));
+            recentRides.add(new Ride("Innovation Drive", "UBCO", "Completed", "10:00 AM"));
+        }
+        setAdapter();
+        Ride newRide = getIntent().getParcelableExtra("newRide");
+        if (newRide != null) {
+            addNewRide(newRide);
+        }
+    }
+
+    private void setAdapter(){
+        adapter = new RecentRidesAdapter(recentRides);
+        recentRidesRecyclerView.setAdapter(adapter);
+    }
+
+    private void initializeViews(){
+        bookRideButton = findViewById(R.id.bookRideButton);
+        offerRideButton = findViewById(R.id.offerRideButton);
+        rewardsButton = findViewById(R.id.rewardsButton);
+        withdrawButton = findViewById(R.id.withdrawButton);
+        activeRidesButton = findViewById(R.id.activeRidesButton);
+        settingsButton = findViewById(R.id.settingsButton);
+        recentRidesRecyclerView = findViewById(R.id.recentRidesRecyclerView);
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private void addNewRide(Ride ride) {
+        recentRides.add(0, ride); // Add new ride at the top
+        adapter.notifyDataSetChanged();
     }
 }

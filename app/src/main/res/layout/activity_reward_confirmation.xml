@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RewardConfirmation">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/homeButton"
+        android:layout_width="280dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#007BFF"
+        android:text="Home"
+        android:textSize="20sp"
+        app:cornerRadius="16dp"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/redeemedRewButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/redeemedRewButton"
+        android:layout_width="280dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="76dp"
+        android:backgroundTint="#007BFF"
+        android:text="View Redeemed Rewards"
+        android:textSize="20sp"
+        app:cornerRadius="16dp"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/confirmationText"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="Your reward of $$ Ride Credit/E-Gift Card has been successfully redeemed!"
+        android:textSize="28sp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
