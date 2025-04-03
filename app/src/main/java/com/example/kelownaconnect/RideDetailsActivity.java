@@ -4,12 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-
 public class RideDetailsActivity extends AppCompatActivity {
 
-    private Button reviewButton, backButton;
+    private Button reviewButton;
+    private LinearLayout backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,20 +20,14 @@ public class RideDetailsActivity extends AppCompatActivity {
         reviewButton = findViewById(R.id.reviewButton);
         backButton = findViewById(R.id.backButton);
 
-        reviewButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Replace ReviewActivity with your actual review page
-                Intent intent = new Intent(RideDetailsActivity.this, ReviewActivity.class);
-                startActivity(intent);
-            }
+        reviewButton.setOnClickListener(v -> {
+            Intent intent = new Intent(RideDetailsActivity.this, ReviewActivity.class);
+            startActivity(intent);
         });
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish(); // Return to previous screen
-            }
-        });
+        backButton.setOnClickListener(v -> {
+            Intent intent = new Intent(RideDetailsActivity.this, MainActivity.class);
+            startActivity(intent);
+            });
     }
 }

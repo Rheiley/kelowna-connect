@@ -7,7 +7,7 @@
     android:background="#FFFFFF">
     <!-- Back Button with Text -->
     <LinearLayout
-        android:id="@+id/backButtonContainer"
+        android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -44,22 +44,27 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="9dp"
         android:text="Ride Details"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/appTitle"
+        app:layout_constraintBottom_toTopOf="@+id/rideDetails"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/appTitle" />
 
     <TextView
         android:id="@+id/rideDetails"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginBottom="253dp"
         android:text="Driver: Driver 1\nCar: Toyota Prius (Black)\nPickup location: [location]\nDrop off location: [location]\nRide duration: 00:08:34\nPrice per km: $1.10\nSubtotal: $3.30\nPoints earned: 50"
-        android:textSize="16sp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/submitReview"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title" />
 
@@ -67,29 +72,14 @@
         android:id="@+id/reviewButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#AF6B6B"
-        android:text="Leave a Review"
-        android:backgroundTint="#003366"
-        android:textColor="#000000"
-        android:textColorLink="#2196F3"
-        app:layout_constraintBottom_toTopOf="@+id/backButton"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#007BFF"
+        android:text="Leave a review"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/rideDetails"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rideDetails" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="#020202"
-        android:text="Back"
-        android:textColor="#FBFBFB"
-        android:backgroundTint="#003366"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviewButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

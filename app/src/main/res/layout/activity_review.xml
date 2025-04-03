@@ -7,7 +7,7 @@
     <!-- Back Button with Text -->
 
     <LinearLayout
-        android:id="@+id/backButtonContainer"
+        android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -119,19 +119,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tagLabel">
 
-        <CheckBox android:text="@string/punctual" />
+        <CheckBox android:text="@string/punctual" android:tag="Punctual" />
+        <CheckBox android:text="Friendly" android:tag="Friendly" />
+        <CheckBox android:text="Clean Car" android:tag="Clean Car" />
+        <CheckBox android:text="Late Arrival" android:tag="Late Arrival" />
+        <CheckBox android:text="Safe Driver" android:tag="Safe Driver" />
+        <CheckBox android:text="Comfortable Seats" android:tag="Comfortable Seats" />
+        <CheckBox android:text="Rude" android:tag="Rude" />
 
-        <CheckBox android:text="Friendly" />
-
-        <CheckBox android:text="Clean Car" />
-
-        <CheckBox android:text="Late Arrival" />
-
-        <CheckBox android:text="Safe Driver" />
-
-        <CheckBox android:text="Comfortable Seats" />
-
-        <CheckBox android:text="Rude" />
 
     </GridLayout>
 
@@ -140,23 +135,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#024890"
+        android:backgroundTint="#007BFF"
         android:text="Submit Review"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tagLayout" />
-
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#003366"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/submitReview"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +15,10 @@ public class ReviewActivity extends AppCompatActivity {
 
     RatingBar ratingBar;
     EditText reviewText;
-    Button submitReview, backButton;
+    Button submitReview;
     CheckBox[] tagBoxes;
+
+    LinearLayout backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,9 @@ public class ReviewActivity extends AppCompatActivity {
             startActivity(new Intent(ReviewActivity.this, ReviewConfirmationActivity.class));
         });
 
-        backButton.setOnClickListener(v -> finish());
+        backButton.setOnClickListener(v -> {
+            Intent intent = new Intent(ReviewActivity.this, RideDetailsActivity.class);
+            startActivity(intent);
+        });
     }
 }
