@@ -41,10 +41,29 @@ public class ReviewActivity extends AppCompatActivity {
         };
 
         submitReview.setOnClickListener(v -> {
+            float rating = ratingBar.getRating();
+            String review = reviewText.getText().toString().trim();
             int selectedTags = 0;
+
             for (CheckBox box : tagBoxes) {
                 if (box.isChecked()) selectedTags++;
             }
+
+            if (rating == 0) {
+                Toast.makeText(this, "Please provide a rating", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (review.isEmpty()) {
+                Toast.makeText(this, "Please write a review", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (selectedTags == 0) {
+                Toast.makeText(this, "Please select at least one tag", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             if (selectedTags > 3) {
                 Toast.makeText(this, "Select up to 3 tags only!", Toast.LENGTH_SHORT).show();
                 return;
@@ -54,6 +73,8 @@ public class ReviewActivity extends AppCompatActivity {
 
             startActivity(new Intent(ReviewActivity.this, ReviewConfirmationActivity.class));
         });
+
+
 
         backButton.setOnClickListener(v -> {
             Intent intent = new Intent(ReviewActivity.this, RideDetailsActivity.class);
