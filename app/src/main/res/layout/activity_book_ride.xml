@@ -15,7 +15,7 @@
         android:layout_marginTop="4dp"
         android:padding="16dp"
         android:shadowColor="#000000"
-        android:text="Book Ride"
+        android:text="Kelowna Connect"
         android:textColor="#003366"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -121,13 +121,14 @@
         android:id="@+id/departureTime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter departure time (24-hour format)"
-        app:layout_constraintTop_toBottomOf="@id/departureTimeLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter departure time (24-hour format)"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/departureTimeLabel" />
 
     <TextView
         android:id="@+id/carpoolPreferencesLabel"
@@ -146,13 +147,14 @@
         android:id="@+id/carpoolPreferences"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter carpool preferences (optional)"
-        app:layout_constraintTop_toBottomOf="@id/carpoolPreferencesLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter carpool preferences (optional)"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/carpoolPreferencesLabel" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/findARideButton"
