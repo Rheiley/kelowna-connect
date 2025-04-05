@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ReviewActivity extends AppCompatActivity {
@@ -69,9 +71,16 @@ public class ReviewActivity extends AppCompatActivity {
                 return;
             }
 
-            // Optional: Save review/rating somewhere
-
-            startActivity(new Intent(ReviewActivity.this, ReviewConfirmationActivity.class));
+            // Show confirmation popup
+            new AlertDialog.Builder(this)
+                    .setTitle("Submit Review")
+                    .setMessage("Are you sure you want to submit this review?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        // Submit and move to confirmation screen
+                        startActivity(new Intent(ReviewActivity.this, ReviewConfirmationActivity.class));
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .show();
         });
 
 
