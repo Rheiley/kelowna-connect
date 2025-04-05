@@ -1,10 +1,12 @@
 package com.example.kelownaconnect;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -17,6 +19,7 @@ public class RecentRidesAdapter extends RecyclerView.Adapter<RecentRidesAdapter.
         this.rideList = rideList;
     }
 
+    @NonNull
     @Override
     public RideViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -24,10 +27,11 @@ public class RecentRidesAdapter extends RecyclerView.Adapter<RecentRidesAdapter.
         return new RideViewHolder(itemView);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(RideViewHolder holder, int position) {
         Ride ride = rideList.get(position);
-        holder.destinationText.setText(ride.getDestination());
+        holder.destinationText.setText(ride.getPickupLocation() + " to " + ride.getDestination());
         holder.statusText.setText(ride.getStatus());
         holder.timeText.setText(ride.getTime());
     }

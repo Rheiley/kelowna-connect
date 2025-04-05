@@ -8,22 +8,68 @@
         android:label="KelownaConnect"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.KelownaConnect">
 
-        <!-- Launcher activity -->
-        <activity android:name=".RideDetailsActivity" android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        android:theme="@style/Theme.KelownaConnect"
+        tools:targetApi="31">
+        <activity
+            android:name=".RewardConfirmation"
+            android:exported="false" />
+        <activity
+            android:name=".RewardDetails"
+            android:exported="false" />
+        <activity
+            android:name=".AvailableRewards"
+            android:exported="false" />
+        <activity
+            android:name=".Rewards"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".RideBookingConfirmation"
+            android:exported="false" />
+        <activity
+            android:name=".DriverDetails"
+            android:exported="false" />
+        <activity
+            android:name=".FindARide"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".BookRide"
+            android:exported="false" />
+      
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+             <intent-filter>
+              <action android:name="android.intent.action.MAIN" />
+              <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
 
         <!-- Other activities -->
-        <activity android:name=".FindARide" android:exported="false" />
+        <activity android:name=".RideDetailsActivity" android:exported="true" />
+        <activity android:name=".RewardConfirmation" android:exported="false" />
+        <activity android:name=".RewardDetails" android:exported="false" />
+        <activity android:name=".AvailableRewards" android:exported="false" />
+        <activity android:name=".Rewards" android:exported="true" />
+        <activity android:name=".RideBookingConfirmation" android:exported="false" />
+        <activity android:name=".DriverDetails" android:exported="false" />
+        <activity android:name=".FindARide" android:exported="true" />
         <activity android:name=".BookRide" android:exported="false" />
-        <activity android:name=".MainActivity" android:exported="false" />
         <activity android:name=".ReviewActivity" android:exported="false" />
         <activity android:name=".ReviewConfirmationActivity" android:exported="false" />
+
 
         <!-- Google Maps API key -->
         <meta-data
