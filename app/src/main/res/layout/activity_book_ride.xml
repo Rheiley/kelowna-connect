@@ -46,7 +46,7 @@
         android:layout_marginTop="4dp"
         android:padding="16dp"
         android:shadowColor="#000000"
-        android:text="Book Ride"
+        android:text="Kelowna Connect"
         android:textColor="#003366"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -73,13 +73,14 @@
         android:id="@+id/pickupLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter pickup location"
-        app:layout_constraintTop_toBottomOf="@id/pickupLocationLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter pickup location"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pickupLocationLabel" />
 
     <TextView
         android:id="@+id/destinationLabel"
@@ -98,13 +99,13 @@
         android:id="@+id/dropoffLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+
         android:hint="Enter your destination"
         app:layout_constraintTop_toBottomOf="@id/destinationLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dropoffLocationLabel" />
 
     <TextView
         android:id="@+id/passengerCountLabel"
@@ -123,14 +124,15 @@
         android:id="@+id/passengerCount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="Enter number of passengers"
-        app:layout_constraintTop_toBottomOf="@id/passengerCountLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter number of passengers"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passengerCountLabel" />
 
     <TextView
         android:id="@+id/departureTimeLabel"
@@ -149,13 +151,14 @@
         android:id="@+id/departureTime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter departure time (24-hour format)"
-        app:layout_constraintTop_toBottomOf="@id/departureTimeLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter departure time (24-hour format)"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/departureTimeLabel" />
 
     <TextView
         android:id="@+id/carpoolPreferencesLabel"
@@ -174,13 +177,14 @@
         android:id="@+id/carpoolPreferences"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter carpool preferences (optional)"
-        app:layout_constraintTop_toBottomOf="@id/carpoolPreferencesLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter carpool preferences (optional)"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/carpoolPreferencesLabel" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/findARideButton"
