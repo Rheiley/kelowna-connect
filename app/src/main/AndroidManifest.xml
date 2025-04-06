@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kelownaconnect">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="KelownaConnect"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
         android:theme="@style/Theme.KelownaConnect"
         tools:targetApi="31">
         <activity
@@ -23,11 +28,11 @@
         <activity
             android:name=".Rewards"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".RideBookingConfirmation"
@@ -47,35 +52,21 @@
         <activity
             android:name=".BookRide"
             android:exported="false" />
-      
         <activity
             android:name=".MainActivity"
             android:exported="true">
-             <intent-filter>
-              <action android:name="android.intent.action.MAIN" />
-              <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
-        <!-- Other activities -->
-        <activity android:name=".RideDetailsActivity" android:exported="true" />
-        <activity android:name=".RewardConfirmation" android:exported="false" />
-        <activity android:name=".RewardDetails" android:exported="false" />
-        <activity android:name=".AvailableRewards" android:exported="false" />
-        <activity android:name=".Rewards" android:exported="true" />
-        <activity android:name=".RideBookingConfirmation" android:exported="false" />
-        <activity android:name=".DriverDetails" android:exported="false" />
-        <activity android:name=".FindARide" android:exported="true" />
-        <activity android:name=".BookRide" android:exported="false" />
-        <activity android:name=".ReviewActivity" android:exported="false" />
-        <activity android:name=".ReviewConfirmationActivity" android:exported="false" />
-
-
-        <!-- Google Maps API key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${apiKey}" />
-
     </application>
 
 </manifest>
