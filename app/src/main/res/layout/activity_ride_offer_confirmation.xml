@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RideOfferConfirmation">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/viewOffers"
+        android:layout_width="280dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="76dp"
+        android:backgroundTint="#007BFF"
+        android:text="View My Offers"
+        android:textSize="20sp"
+        app:cornerRadius="16dp"
+        app:icon="@drawable/baseline_directions_car_24"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="314dp"
+        android:layout_height="576dp"
+        android:layout_marginTop="32dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.67"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img" />
+
+    <TextView
+        android:id="@+id/headerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="4dp"
+        android:padding="16dp"
+        android:shadowColor="#000000"
+        android:text="Offer Confirmed"
+        android:textColor="#003366"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:flow_horizontalAlign="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pubmsg"
+        android:layout_width="235dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="24dp"
+        android:text="Your Offer Has Been Published!"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerText" />
+
+    <TextView
+        android:id="@+id/waitmsg"
+        android:layout_width="254dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="268dp"
+        android:text="Please wait while we connect you with a rider..."
+        android:textAlignment="center"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pubmsg" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
