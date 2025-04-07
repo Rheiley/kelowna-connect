@@ -1,6 +1,8 @@
 package com.example.kelownaconnect;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +16,10 @@ import java.util.List;
 public class RecentRidesAdapter extends RecyclerView.Adapter<RecentRidesAdapter.RideViewHolder> {
 
     private List<Ride> rideList;
+    private Context context;
 
-    public RecentRidesAdapter(List<Ride> rideList) {
+    public RecentRidesAdapter(Context context, List<Ride> rideList) {
+        this.context = context;
         this.rideList = rideList;
     }
 
@@ -34,6 +38,11 @@ public class RecentRidesAdapter extends RecyclerView.Adapter<RecentRidesAdapter.
         holder.destinationText.setText(ride.getPickupLocation() + " to " + ride.getDestination());
         holder.statusText.setText(ride.getStatus());
         holder.timeText.setText(ride.getTime());
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, RideDetailsActivity.class);
+            context.startActivity(intent);
+        });
     }
 
     @Override

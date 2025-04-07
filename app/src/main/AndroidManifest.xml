@@ -20,6 +20,15 @@
             android:name=".RideAcceptConfirmation"
             android:exported="false" />
         <activity
+            android:name=".RideDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReviewConfirmationActivity"
+            android:exported="false" />
+        <activity
             android:name=".ViewRequests"
             android:exported="false" />
         <activity

@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setAdapter(){
-        adapter = new RecentRidesAdapter(recentRides);
+        adapter = new RecentRidesAdapter(this, recentRides);
         recentRidesRecyclerView.setAdapter(adapter);
     }
 
