@@ -11,6 +11,7 @@ public class Ride implements Parcelable {
     private int passengers;
     private String preferences;
 
+
     public Ride(String pickupLocation, String destination, String status, int passengers, String time, String preferences) {
         this.pickupLocation = pickupLocation;
         this.destination = destination;
@@ -34,6 +35,7 @@ public class Ride implements Parcelable {
         this.status = status;
         this.time = time;
     }
+
 
     protected Ride(Parcel in) {
         pickupLocation = in.readString();
@@ -77,6 +79,7 @@ public class Ride implements Parcelable {
     public String getPreferences() {
         return preferences;
     }
+
 
     public void setStatus(String status){
         this.status = status;
