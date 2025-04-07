@@ -3,6 +3,7 @@ package com.example.kelownaconnect;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -35,6 +36,8 @@ public class ViewRequests extends AppCompatActivity {
         acc.setOnClickListener(v -> {
             Toast.makeText(ViewRequests.this, "Feature coming soon :D", Toast.LENGTH_SHORT).show();
         });
-        home.setOnClickListener(v -> finish());
+        home.setOnClickListener(v -> {
+            startActivity(new Intent(ViewRequests.this, MainActivity.class));
+        });
     }
 }

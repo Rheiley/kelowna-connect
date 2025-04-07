@@ -74,11 +74,18 @@ public class OfferARide extends AppCompatActivity {
         destination.setFocusable(false);
         numberOfSeats.setFocusable(false);
         departureTime.setFocusable(false);
-        cost.setFocusable(false);
     }
 
     private void setupOnClickListeners(){
         backButton.setOnClickListener(v -> finish());
+        backButton.setOnClickListener(v -> finish());
+        destination.setOnClickListener(v -> {
+            activeLocationField = destination;
+            openPlaceSearch();
+        });
+        numberOfSeats.setOnClickListener(v -> openSeatsPicker());
+        departureTime.setOnClickListener(v -> openTimePicker());
+
         offerRideButton.setOnClickListener(v -> {
             // Get input values
             String destination = this.destination.getText().toString().trim();
@@ -103,20 +110,9 @@ public class OfferARide extends AppCompatActivity {
                 Toast.makeText(OfferARide.this, "Please enter your rate", Toast.LENGTH_SHORT).show();
                 return;
             }
-
             offer = new Offer(destination, Integer.parseInt(numberOfSeats), departureTime, Integer.parseInt(cost));
-            //for now it will go to requests but it would go to MyOffers activity if we were to add it
-            Intent intent = new Intent(this, Requests.class);
-            intent.putExtra("offer", offer);
-            startActivity(intent);
+            confirmOffer(offer);
         });
-        destination.setOnClickListener(v -> {
-            activeLocationField = destination;
-            openPlaceSearch();
-        });
-        numberOfSeats.setOnClickListener(v -> openSeatsPicker());
-        departureTime.setOnClickListener(v -> openTimePicker());
-        offerRideButton.setOnClickListener(v -> confirmOffer(offer));
     }
 
     private void initializePlacesAPI(){

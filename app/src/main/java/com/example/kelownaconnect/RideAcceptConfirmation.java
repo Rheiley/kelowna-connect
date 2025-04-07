@@ -44,7 +44,7 @@ public class RideAcceptConfirmation extends AppCompatActivity {
             startActivity(new Intent(RideAcceptConfirmation.this, Requests.class));
         });
         home.setOnClickListener(v -> {
-            finish();
+            startActivity(new Intent(RideAcceptConfirmation.this, MainActivity.class));
         });
     }
     private void setDetails() {
